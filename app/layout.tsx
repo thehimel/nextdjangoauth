@@ -7,6 +7,7 @@ import React from "react";
 
 import { Providers } from "./providers";
 
+import { Colors, DEFAULT_THEME } from "@/components/theme/constants";
 import { HeartFilledIcon } from "@/components/icons";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
@@ -25,8 +26,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { media: "(prefers-color-scheme: light)", color: Colors.WHITE },
+    { media: "(prefers-color-scheme: dark)", color: Colors.BLACK },
   ],
 };
 
@@ -35,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html suppressHydrationWarning lang="en">
       <head />
       <body className={clsx("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+        <Providers themeProps={{ attribute: "class", defaultTheme: DEFAULT_THEME }}>
           <div className="relative flex flex-col h-screen">
             <Navbar />
             <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">{children}</main>

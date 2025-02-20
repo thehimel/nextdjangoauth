@@ -44,3 +44,11 @@
 * Make a dynamic logo in [index.tsx](../../components/icons/index.tsx)
 * Add environment variables in [.env.example](../../.env.example)
 * Use the defined environment variables in [site.ts](../../config/site.ts)
+
+## Configure Default Theme
+
+* Define `DEFAULT_THEME` in [constants.ts](../../components/theme/constants.ts) and us it in [layout.tsx](../../app/layout.tsx)
+
+# Use `Colors` enum for `themeColor` Values in Viewport
+
+* Updated `themeColor` in [layout.tsx](../../app/layout.tsx)
