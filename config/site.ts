@@ -1,8 +1,10 @@
+import { CONFIG } from "@/config/env";
+
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: process.env.NEXT_PUBLIC_SITE_NAME || "BrandName",
-  shortName: process.env.NEXT_PUBLIC_SITE_SHORTNAME || "BN",
+  name: CONFIG.SITE_NAME,
+  shortName: CONFIG.SITE_SHORTNAME,
   description: "A secure authentication solution built with Next.js and Django REST framework.",
   navItems: [
     {
