@@ -14,3 +14,20 @@
 
 * Install dependencies: `npm install --save-dev @iconify/react usehooks-ts recharts`
 * Reference: [HeroUI Pro Documentation](https://www.heroui.pro/documentation)
+
+## Configure Prettier Line Length to 120 Characters
+
+* Update [.eslintrc.json](../../.eslintrc.json)
+
+```json
+{
+  "rules": {
+    "prettier/prettier": [
+      "warn",
+      {
+        "printWidth": 120
+      }
+    ]
+  }
+}
+```
