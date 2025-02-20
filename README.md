@@ -16,6 +16,11 @@ registration, and access control with modern security features.
 
 ## Getting Started
 
+### Setting Up Environment Variables
+
+* Create a `.env` file by copying [.env.example](.env.example)
+* Open `.env` and update the variables as needed.
+
 ### Install dependencies
 
 You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
