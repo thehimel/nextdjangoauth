@@ -3,7 +3,7 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   name: process.env.NEXT_PUBLIC_SITE_NAME || "BrandName",
   shortName: process.env.NEXT_PUBLIC_SITE_SHORTNAME || "BN",
-  description: "Make beautiful websites regardless of your design experience.",
+  description: "A secure authentication solution built with Next.js and Django REST framework.",
   navItems: [
     {
       label: "Home",
@@ -61,10 +61,10 @@ export const siteConfig = {
     },
   ],
   links: {
-    github: "https://github.com/heroui-inc/heroui",
-    twitter: "https://twitter.com/hero_ui",
-    docs: "https://heroui.com",
-    discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev",
+    github: "https://github.com/",
+    twitter: "https://twitter.com/",
+    docs: "",
+    discord: "https://discord.gg/",
+    sponsor: "https://patreon.com/",
   },
 };
