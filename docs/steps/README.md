@@ -31,3 +31,10 @@
   }
 }
 ```
+
+## Create Favicon
+
+* Generate the SVG code for the logo.
+* Save it as a .svg file.
+* Convert the .svg file to .ico.
+* Save it as ![favicon.ico](../../public/favicon.ico)
