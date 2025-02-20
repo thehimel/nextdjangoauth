@@ -9,3 +9,8 @@
 ## Add CI workflow for Next.js
 
 * [ci.yml](../../.github/workflows/ci.yml)
+
+## Install Dependencies for HeroUI PRO
+
+* Install dependencies: `npm install --save-dev @iconify/react usehooks-ts recharts`
+* Reference: [HeroUI Pro Documentation](https://www.heroui.pro/documentation)
