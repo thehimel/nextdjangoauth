@@ -38,3 +38,9 @@
 * Save it as a .svg file.
 * Convert the .svg file to .ico.
 * Save it as ![favicon.ico](../../public/favicon.ico)
+
+# Make Site Name and Short Name Configurable
+
+* Make a dynamic logo in [index.tsx](../../components/icons/index.tsx)
+* Add environment variables in [.env.example](../../.env.example)
+* Use the defined environment variables in [site.ts](../../config/site.ts)
