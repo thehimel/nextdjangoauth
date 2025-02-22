@@ -1,3 +1,4 @@
+import AuthButton from "@/components/auth/auth-button";
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -93,6 +94,9 @@ export const Navbar = () => {
             Sponsor
           </Button>
         </NavbarItem>
+        <NavbarItem className="hidden sm:flex">
+          <AuthButton />
+        </NavbarItem>
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
@@ -100,6 +104,7 @@ export const Navbar = () => {
           <GithubIcon className="text-default-500" />
         </Link>
         <ThemeSwitch />
+        <AuthButton />
         <NavbarMenuToggle />
       </NavbarContent>
 

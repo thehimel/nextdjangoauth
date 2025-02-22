@@ -68,5 +68,7 @@ export const siteConfig = {
     docs: "",
     discord: "https://discord.gg/",
     sponsor: "https://patreon.com/",
+    signin: "/api/auth/signin",
+    signout: "/api/auth/signout",
   },
 };
