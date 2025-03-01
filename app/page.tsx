@@ -9,7 +9,7 @@ import { button as buttonStyles } from "@heroui/theme";
 import Script from "next/script";
 
 import { siteConfig } from "@/modules/global/config/site";
-import { title, subtitle } from "@/components/primitives";
+import { title, subtitle } from "@/modules/theme/primitives";
 import { GithubIcon } from "@/modules/global/components/icons";
 
 // Declare VANTA in the global window object

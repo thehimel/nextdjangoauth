@@ -47,7 +47,7 @@
 
 ## Configure Default Theme
 
-* Define `DEFAULT_THEME` in [constants.ts](../../components/theme/constants.ts) and us it in [layout.tsx](../../app/layout.tsx)
+* Define `DEFAULT_THEME` in [constants.ts](../../modules/theme/constants.ts) and us it in [layout.tsx](../../app/layout.tsx)
 
 # Use `Colors` enum for `themeColor` Values in Viewport
 

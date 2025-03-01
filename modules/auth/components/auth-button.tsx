@@ -9,7 +9,7 @@ import { useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
 import { PuffLoader } from "react-spinners";
 
-import { Colors, Themes } from "@/components/theme/constants";
+import { Colors, Themes } from "@/modules/theme/constants";
 import { siteConfig } from "@/modules/global/config/site";
 
 const AuthButton = () => {
