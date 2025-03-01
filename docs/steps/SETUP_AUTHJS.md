@@ -11,7 +11,7 @@
   * By default, the value is saved to `.env.local`. Move it to your environment file. Then you can delete `.env.local`.
   * You must also define it in the production.
 * Create the following files following [this reference](https://authjs.dev/getting-started/installation?framework=next-js):
-  * [auth.ts](../../auth.ts)
+  * [auth/index.ts](../../modules/auth/index.ts)
   * [route.ts](../../app/api/auth/%5B...nextauth%5D/route.ts)
   * [middleware.ts](../../middleware.ts)
 * Add `SessionProvider` to wrap UI and theme providers in [providers.tsx](../../app/providers.tsx)
@@ -27,7 +27,7 @@
 * To set up the sign in and sign out routes, configure the following pages:
   * [signin](../../app/auth/signin)
   * [signout](../../app/auth/signout)
-* Define `signIn` and `signOut` pages in [auth.ts](../../auth.ts)
+* Define `signIn` and `signOut` pages in [auth/index.ts](../../modules/auth/index.ts)
 * Add `signin` and `signout` links in [site.ts](../../config/site.ts)
 * Add the [auth-button.tsx](../../components/auth/auth-button.tsx) in navbar.
 
@@ -37,7 +37,7 @@
 
 * Follow [this guideline](https://authjs.dev/getting-started/providers/google?framework=next-js)
 * Set environment variables: `AUTH_GOOGLE_ID` and `AUTH_GOOGLE_SECRET`.
-* Add `Google` as a providers in [auth.ts](../../auth.ts)
+* Add `Google` as a providers in [auth/index.ts](../../modules/auth/index.ts)
 
 ### Configure Google OAuth
 

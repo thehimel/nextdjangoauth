@@ -1,4 +1,4 @@
-export { auth as middleware } from "@/auth";
+export { auth as middleware } from "@/modules/auth";
 
 export const config = {
   // *: zero or more parameters
