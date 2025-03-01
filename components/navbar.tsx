@@ -67,6 +67,7 @@ export const Navbar = () => {
                 )}
                 color="foreground"
                 href={item.href}
+                scroll={false}
               >
                 {item.label}
               </NextLink>
