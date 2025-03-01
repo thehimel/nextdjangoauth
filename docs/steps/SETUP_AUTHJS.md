@@ -29,7 +29,7 @@
   * [signout](../../app/auth/signout)
 * Define `signIn` and `signOut` pages in [auth/index.ts](../../modules/auth/index.ts)
 * Add `signin` and `signout` links in [site.ts](../../config/site.ts)
-* Add the [auth-button.tsx](../../components/auth/auth-button.tsx) in navbar.
+* Add the [auth-button.tsx](../../modules/auth/components/auth-button.tsx) in navbar.
 
 ## Configure Provider
 

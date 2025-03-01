@@ -1,4 +1,3 @@
-import AuthButton from "@/components/auth/auth-button";
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -16,6 +15,7 @@ import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
 
+import AuthButton from "@/modules/auth/components/auth-button";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme/theme-switch";
 import { TwitterIcon, GithubIcon, DiscordIcon, HeartFilledIcon, SearchIcon, Logo } from "@/components/icons";
