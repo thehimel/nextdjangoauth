@@ -11,7 +11,7 @@ import { HeartFilledIcon } from "@/modules/global/components/icons";
 import { Colors, DEFAULT_THEME } from "@/modules/theme/constants";
 import { siteConfig } from "@/modules/global/config/site";
 import { fontSans } from "@/modules/global/config/fonts";
-import { Navbar } from "@/components/navbar";
+import { Navbar } from "@/modules/global/components/navbar";
 
 export const metadata: Metadata = {
   title: {
