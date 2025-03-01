@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { siteConfig } from "@/modules/global/config/site";
-import { IconSvgProps } from "@/types";
+import { IconSvgProps } from "@/modules/global/types";
 
 export const Logo: React.FC<IconSvgProps> = ({ size = 36, width, height, ...props }) => (
   <svg fill="none" height={size || height} viewBox="0 0 24 24" width={size || width} {...props}>
