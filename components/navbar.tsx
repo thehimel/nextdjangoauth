@@ -15,9 +15,9 @@ import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
 
+import { ThemeSwitcher } from "@/components/theme/theme-switch";
 import AuthButton from "@/modules/auth/components/auth-button";
 import { siteConfig } from "@/modules/global/config/site";
-import { ThemeSwitch } from "@/components/theme/theme-switch";
 import {
   TwitterIcon,
   GithubIcon,
@@ -87,7 +87,7 @@ export const Navbar = () => {
           <Link isExternal aria-label="Github" href={siteConfig.links.github}>
             <GithubIcon className="text-default-500" />
           </Link>
-          <ThemeSwitch />
+          <ThemeSwitcher />
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
         <NavbarItem className="hidden md:flex">
@@ -111,7 +111,7 @@ export const Navbar = () => {
         <Link isExternal aria-label="Github" href={siteConfig.links.github}>
           <GithubIcon className="text-default-500" />
         </Link>
-        <ThemeSwitch />
+        <ThemeSwitcher />
         <AuthButton />
         <NavbarMenuToggle />
       </NavbarContent>
