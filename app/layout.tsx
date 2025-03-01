@@ -7,8 +7,8 @@ import React from "react";
 
 import { Providers } from "./providers";
 
+import { HeartFilledIcon } from "@/modules/global/components/icons";
 import { Colors, DEFAULT_THEME } from "@/components/theme/constants";
-import { HeartFilledIcon } from "@/components/icons";
 import { siteConfig } from "@/modules/global/config/site";
 import { fontSans } from "@/modules/global/config/fonts";
 import { Navbar } from "@/components/navbar";

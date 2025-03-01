@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { PuffLoader } from "react-spinners";
 
-import { Logo } from "@/components/icons";
+import { Logo } from "@/modules/global/components/icons";
 
 export default function SignInPage() {
   const { theme } = useTheme();

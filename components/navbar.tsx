@@ -18,7 +18,14 @@ import clsx from "clsx";
 import AuthButton from "@/modules/auth/components/auth-button";
 import { siteConfig } from "@/modules/global/config/site";
 import { ThemeSwitch } from "@/components/theme/theme-switch";
-import { TwitterIcon, GithubIcon, DiscordIcon, HeartFilledIcon, SearchIcon, Logo } from "@/components/icons";
+import {
+  TwitterIcon,
+  GithubIcon,
+  DiscordIcon,
+  HeartFilledIcon,
+  SearchIcon,
+  Logo,
+} from "@/modules/global/components/icons";
 
 export const Navbar = () => {
   const searchInput = (

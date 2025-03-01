@@ -41,7 +41,7 @@
 
 # Make Site Name and Short Name Configurable
 
-* Make a dynamic logo in [index.tsx](../../components/icons/index.tsx)
+* Make a dynamic logo in [icons/index.tsx](../../modules/global/components/icons/index.tsx)
 * Add environment variables in [.env.example](../../.env.example)
 * Use the defined environment variables in [site.ts](../../modules/global/config/site.ts)
 
