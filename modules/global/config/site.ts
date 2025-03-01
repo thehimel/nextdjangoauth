@@ -1,4 +1,4 @@
-import { CONFIG } from "@/config/env";
+import { CONFIG } from "@/modules/global/config/env";
 
 export type SiteConfig = typeof siteConfig;
 

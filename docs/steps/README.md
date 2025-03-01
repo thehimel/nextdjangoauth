@@ -43,7 +43,7 @@
 
 * Make a dynamic logo in [index.tsx](../../components/icons/index.tsx)
 * Add environment variables in [.env.example](../../.env.example)
-* Use the defined environment variables in [site.ts](../../config/site.ts)
+* Use the defined environment variables in [site.ts](../../modules/global/config/site.ts)
 
 ## Configure Default Theme
 
@@ -55,6 +55,6 @@
 
 ## Centralized Management of Environment Variables
 
-* Added a new file: [env.ts](../../config/env.ts) for managing environment variables in a centralized way.
+* Added a new file: [env.ts](../../modules/global/config/env.ts) for managing environment variables in a centralized way.
 * Move all environment variable references (e.g., `.env`) into `env.ts` for better scalability and maintainability.
 * Access environment variables throughout the project using the exported object from `env.ts`.

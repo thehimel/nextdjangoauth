@@ -9,8 +9,8 @@ import { Providers } from "./providers";
 
 import { Colors, DEFAULT_THEME } from "@/components/theme/constants";
 import { HeartFilledIcon } from "@/components/icons";
-import { siteConfig } from "@/config/site";
-import { fontSans } from "@/config/fonts";
+import { siteConfig } from "@/modules/global/config/site";
+import { fontSans } from "@/modules/global/config/fonts";
 import { Navbar } from "@/components/navbar";
 
 export const metadata: Metadata = {

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/modules/global/config/site";
 import { IconSvgProps } from "@/types";
 
 export const Logo: React.FC<IconSvgProps> = ({ size = 36, width, height, ...props }) => (

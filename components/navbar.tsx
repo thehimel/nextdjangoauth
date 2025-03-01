@@ -16,7 +16,7 @@ import NextLink from "next/link";
 import clsx from "clsx";
 
 import AuthButton from "@/modules/auth/components/auth-button";
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/modules/global/config/site";
 import { ThemeSwitch } from "@/components/theme/theme-switch";
 import { TwitterIcon, GithubIcon, DiscordIcon, HeartFilledIcon, SearchIcon, Logo } from "@/components/icons";
 

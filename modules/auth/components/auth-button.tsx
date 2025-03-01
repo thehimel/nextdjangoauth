@@ -10,7 +10,7 @@ import { useTheme } from "next-themes";
 import { PuffLoader } from "react-spinners";
 
 import { Colors, Themes } from "@/components/theme/constants";
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/modules/global/config/site";
 
 const AuthButton = () => {
   const { theme } = useTheme();

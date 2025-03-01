@@ -8,7 +8,7 @@ import { Code } from "@heroui/code";
 import { button as buttonStyles } from "@heroui/theme";
 import Script from "next/script";
 
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/modules/global/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
 
