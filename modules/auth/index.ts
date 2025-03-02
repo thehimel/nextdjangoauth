@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import axios from "axios";
 
-import { AUTH_URLS } from "@/modules/auth/urls";
+import { authUrls } from "@/modules/auth/urls";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [Google],
@@ -20,7 +20,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         // Sync with the Django backend
         try {
-          await axios.post(AUTH_URLS.GOOGLE_AUTH_API_URL, params, {headers: headers});
+          await axios.post(authUrls.GOOGLE_AUTH_API_URL, params, { headers: headers });
         } catch (error) {
           console.error("Error syncing token with Django backend:", error);
         }
