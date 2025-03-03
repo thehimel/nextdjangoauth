@@ -11,7 +11,7 @@ import { PuffLoader } from "react-spinners";
 
 import { Logo } from "@/modules/global/components/icons";
 
-export default function SignInPage() {
+export default function SignOutPage() {
   const { theme } = useTheme();
   const color = theme === "light" ? "black" : "white";
 
@@ -32,7 +32,7 @@ export default function SignInPage() {
         <Logo className="" size={60} />
         <p className="text-xl font-medium mt-2">Sign Out</p>
         {status === "authenticated" && (
-          <p className="text-small text-default-500 mt-2">
+          <p className="text-small text-default-500 mt-2 text-center">
             Are you sure you want to sign out{firstName && ` ${firstName}`}?
           </p>
         )}
