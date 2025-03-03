@@ -3,7 +3,7 @@
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { Tabs, Tab } from "@heroui/tabs";
-import React, {useState, useEffect, useCallback} from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { Icon } from "@iconify/react";
@@ -21,7 +21,18 @@ enum TabKeys {
 export default function SignInPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const errorType = searchParams.get("error");
+
+  // Memoize URL params to prevent unnecessary re-renders
+  const urlParams = useMemo(
+    () => ({
+      errorType: searchParams.get("error"),
+      token: searchParams.get("token"),
+      callbackUrl: searchParams.get("callbackUrl") || "/",
+      email: searchParams.get("email") || "",
+    }),
+    [searchParams],
+  );
+
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
@@ -33,35 +44,29 @@ export default function SignInPage() {
   // For magic link token verification
   const [verifyingToken, setVerifyingToken] = useState(false);
 
-  // Get the token from URL if present
-  const token = searchParams.get("token");
-  const callbackUrl = searchParams.get("callbackUrl") || "/";
-
   const getErrorMessage = useCallback(() => {
-    if (errorType === "email_registered_with_email_login") {
-      const emailParam: string = searchParams.get("email") || "";
-
-      return `This email ${emailParam ? `(${emailParam}) ` : ""}is registered with email authentication. Please sign in with your email or use a different account.`;
+    if (urlParams.errorType === "email_registered_with_email_login") {
+      return `This email ${urlParams.email ? `(${urlParams.email}) ` : ""}is registered with email authentication. Please sign in with your email or use a different account.`;
     }
 
     return authMessages.UNEXPECTED_ERROR;
-  }, [errorType, searchParams]);
+  }, [urlParams]);
 
   useEffect(() => {
-    if (errorType) {
+    if (urlParams.errorType) {
       setError(getErrorMessage());
     }
-  }, [errorType, getErrorMessage]);
+  }, [urlParams.errorType, getErrorMessage]);
 
   // Handle magic link token verification
   useEffect(() => {
-    if (token) {
+    if (urlParams.token) {
       setVerifyingToken(true);
       // Verify the token by signing in with credentials
       signIn("magic-link", {
-        token,
+        token: urlParams.token,
         redirect: false, // prevent automatic redirect
-        callbackUrl,
+        callbackUrl: urlParams.callbackUrl,
       })
         .then((response) => {
           // If there's an error (like invalid token), show a custom message
@@ -71,7 +76,7 @@ export default function SignInPage() {
             setVerifyingToken(false);
           } else {
             // Successful authentication - redirect to the callback URL using Next.js router
-            router.push(callbackUrl || "/");
+            router.push(urlParams.callbackUrl);
           }
         })
         .catch((error) => {
@@ -81,7 +86,7 @@ export default function SignInPage() {
           setVerifyingToken(false);
         });
     }
-  }, [token, callbackUrl, router]);
+  }, [urlParams.token, urlParams.callbackUrl, router]);
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError("");
@@ -123,7 +128,7 @@ export default function SignInPage() {
   // Handle Google sign in
   const handleGoogleSignIn = () => {
     setIsSubmitting(true);
-    signIn("google", { callbackUrl });
+    signIn("google", { callbackUrl: urlParams.callbackUrl });
   };
 
   // If we're verifying a token, show loading state
