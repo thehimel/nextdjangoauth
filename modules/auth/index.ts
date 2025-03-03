@@ -1,11 +1,26 @@
-import NextAuth, { Session, JWT } from "next-auth";
+import NextAuth, { NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { authUrls } from "@/modules/auth/urls";
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
+interface UserResponse {
+  pk: string;
+  email: string;
+  first_name?: string;
+  last_name?: string;
+  username: string;
+}
+
+interface AuthResponse {
+  user: UserResponse;
+  access: string;
+  refresh: string;
+}
+
+// Configuration object
+const authConfig: NextAuthConfig = {
   providers: [
     Google({
       async profile(profile) {
@@ -23,36 +38,30 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token: { label: "Magic Link Token", type: "text" },
       },
       async authorize(credentials) {
-        try {
-          if (!credentials?.token) {
-            return null;
-          }
+        if (!credentials?.token) return null;
 
-          // Verify the magic link token with your Django backend
-          const response = await axios.post(
+        try {
+          const { data } = await axios.post<AuthResponse>(
             authUrls.VERIFY_MAGIC_LINK_URL,
             { token: credentials.token },
             { headers: { "Content-Type": "application/json" } },
           );
 
-          // If the token is valid, the backend should return user data
-          if (response.data && response.data.user) {
-            return {
-              id: response.data.user.pk,
-              email: response.data.user.email,
-              name:
-                `${response.data.user.first_name || ""} ${response.data.user.last_name || ""}`.trim() ||
-                response.data.user.email,
-              username: response.data.user.username,
-              // Pass authentication tokens to be used in the jwt callback
-              access_token: response.data.access,
-              refresh_token: response.data.refresh,
-            };
-          }
+          if (!data?.user) return null;
 
-          return null;
+          const { user } = data;
+          const fullName = [user.first_name, user.last_name].filter(Boolean).join(" ").trim();
+
+          return {
+            id: user.pk,
+            email: user.email,
+            name: fullName || user.email,
+            username: user.username,
+            access_token: data.access,
+            refresh_token: data.refresh,
+          };
         } catch (error) {
-          console.error("Error verifying magic link token:", error);
+          console.error("Magic link verification failed:", error);
 
           return null;
         }
@@ -68,66 +77,66 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
   callbacks: {
     async signIn({ account, profile }) {
-      if (account?.provider === "google") {
-        try {
-          const headers = { "Content-Type": "application/json" };
-          const params = { access_token: account.access_token };
+      if (account?.provider !== "google") return true;
 
-          await axios.post(authUrls.GOOGLE_AUTH_API_URL, params, { headers: headers });
+      try {
+        await axios.post(
+          authUrls.GOOGLE_AUTH_API_URL,
+          { access_token: account.access_token },
+          { headers: { "Content-Type": "application/json" } },
+        );
 
-          return true;
-        } catch (error) {
-          if (axios.isAxiosError(error) && error.response?.status === 400) {
-            const errorData = error.response.data;
+        return true;
+      } catch (error) {
+        if (error instanceof AxiosError && error.response?.status === 400) {
+          const errorData = error.response.data;
 
-            if (errorData.code === "email_registered_with_email_login") {
-              return `/auth/signin?error=email_registered_with_email_login&email=${encodeURIComponent(profile?.email || "")}`;
-            }
+          if (errorData.code === "email_registered_with_email_login") {
+            const encodedEmail = encodeURIComponent(profile?.email ?? "");
+
+            return `/auth/signin?error=email_registered_with_email_login&email=${encodedEmail}`;
           }
-
-          return false;
         }
-      }
 
-      return true;
+        return false;
+      }
     },
 
     async jwt({ token, account, user }) {
-      // Initial sign-in
-      if (account && user) {
-        // Google authentication
-        if (account.provider === "google") {
-          token.accessToken = account.access_token;
-        }
+      if (!account || !user) return token;
 
-        // Magic link authentication
-        if (account.provider === "magic-link") {
-          token.accessToken = user.access_token;
-          token.refreshToken = user.refresh_token;
-          token.username = user.username; // Store username in token
-        }
+      const isGoogleAuth = account.provider === "google";
+      const isMagicLink = account.provider === "magic-link";
 
-        // Store user data
-        token.userId = user.id;
-        token.email = user.email;
-      }
-
-      return token;
+      return {
+        ...token,
+        accessToken: isGoogleAuth ? account.access_token : user.access_token,
+        refreshToken: isMagicLink ? user.refresh_token : undefined,
+        username: isMagicLink ? user.username : undefined,
+        userId: user.id,
+        email: user.email,
+      };
     },
 
     // @ts-ignore
-    async session({ session, token }: { session: Session; token: JWT }) {
-      if (token.accessToken) session.accessToken = token.accessToken;
-      if (token.refreshToken) session.refreshToken = token.refreshToken;
-      if (token.username) session.user.username = token.username;
-      if (token.userId) session.user.id = token.userId as string;
-
-      return session;
+    async session({ session, token }) {
+      return {
+        ...session,
+        accessToken: token.accessToken,
+        refreshToken: token.refreshToken,
+        user: {
+          ...session.user,
+          username: token.username,
+          id: token.userId,
+        },
+      };
     },
   },
-  // Add this to extend default sessions
+
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
-});
+};
+
+export const { handlers, auth, signIn, signOut } = NextAuth(authConfig);
