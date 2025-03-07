@@ -17,10 +17,10 @@ export default function Home() {
 
       <section className="relative z-10 flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div className="inline-block max-w-xl text-center justify-center">
-          <span className={title()}>Integrate&nbsp;</span>
+          <span className={title()}>Add&nbsp;</span>
           <span className={title({ color: "violet" })}>authentication&nbsp;</span>
           <br />
-          <span className={title()}>effortlessly, regardless of your experience.</span>
+          <span className={title()}>seamlessly, regardless of your experience.</span>
           <div className={subtitle({ class: "mt-4" })}>
             Authentication simplified with <span className="text-blue-500">Next.js</span> and{" "}
             <span className="text-green-500">Django</span>.
