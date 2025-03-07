@@ -6,25 +6,31 @@ import { Link } from "@heroui/link";
 import { signOut, useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { PuffLoader } from "react-spinners";
 
 import { Logo } from "@/modules/global/components/icons";
 
 export default function SignOutPage() {
   const { theme } = useTheme();
-  const color = theme === "light" ? "black" : "white";
-
+  const [mounted, setMounted] = useState(false);
   const { status, data: session } = useSession();
   const router = useRouter();
 
   const firstName = session?.user?.name?.split(" ")[0] || "";
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/");
     }
   }, [status, router]);
+
+  // Get color only after mounting
+  const color = mounted ? (theme === "light" ? "black" : "white") : "black"; // default to black
 
   return (
     <>
