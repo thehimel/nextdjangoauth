@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -15,6 +17,7 @@ import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
 
+import { useIsAuthPage } from "@/modules/auth/hooks/useIsAuthPage";
 import AuthButton from "@/modules/auth/components/auth-button";
 import { siteConfig } from "@/modules/global/config/site";
 import { ThemeSwitch } from "@/modules/theme/components/theme-switch";
@@ -28,6 +31,12 @@ import {
 } from "@/modules/global/components/icons";
 
 export const Navbar = () => {
+  const isAuthPage = useIsAuthPage();
+
+  if (isAuthPage) {
+    return null;
+  }
+
   const searchInput = (
     <Input
       aria-label="Search"
