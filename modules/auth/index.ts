@@ -70,9 +70,9 @@ const authConfig: NextAuthConfig = {
   ],
 
   pages: {
-    signIn: "/auth/signin",
-    signOut: "/auth/signout",
-    error: "/auth/signin",
+    signIn: authUrls.SIGN_IN_URL,
+    signOut: authUrls.SIGN_OUT_URL,
+    error: authUrls.SIGN_IN_URL,
   },
 
   callbacks: {
