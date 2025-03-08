@@ -4,6 +4,8 @@ export const authMessages = {
   GOOGLE_AUTH_UNAVAILABLE: "Google authentication is currently unavailable. Please try again later.",
 
   EMAIL_VALIDATION_ERROR: "Please enter a valid email address.",
+  VERIFICATION_CODE_EMPTY_ERROR: "Please enter a valid verification code.",
+  VERIFICATION_CODE_VALIDATION_ERROR: "Sorry, we couldn't verify this code. Please try again or request a new one.",
   LINK_VERIFICATION_IN_PROGRESS: "Almost there! Verifying your link!",
 
   REQUEST_MAGIC_LINK_SUCCESS:
