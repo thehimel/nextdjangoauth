@@ -7,6 +7,7 @@ import { Icon } from "@iconify/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 
+import { Logo } from "@/modules/global/components/icons";
 import LoadingScreen from "@/modules/auth/components/loading-screen";
 import { handleEmailBlur } from "@/modules/auth/validators/emailValidator";
 import { requestMagicLink } from "@/modules/auth/services/requestMagicLink";
@@ -211,7 +212,10 @@ export default function SignInPage() {
 
   return (
     <ResizablePanel>
-      <h1 className="mb-4 text-center text-xl font-medium">Sign In</h1>
+      <div className="flex flex-col items-center">
+        <Logo size={60} />
+        <h1 className="text-xl font-medium mt-2 mb-4">Sign In</h1>
+      </div>
 
       {error && (
         <div className="p-4 mb-4 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-800">
