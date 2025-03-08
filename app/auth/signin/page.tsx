@@ -23,14 +23,13 @@ export default function SignInPage() {
   // Form state
   const [email, setEmail] = React.useState("");
   const [verificationCode, setVerificationCode] = React.useState("");
-  const [isEmailValid, setIsEmailValid] = React.useState(true);
   const [isVerificationCodeValid, setIsVerificationCodeValid] = React.useState(true);
 
   // Status state
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [emailSent, setEmailSent] = React.useState(false);
+  const [emailError, setEmailError] = React.useState("");
   const [error, setError] = React.useState("");
-  const [successMessage, setSuccessMessage] = React.useState("");
   const [verifyingToken, setVerifyingToken] = React.useState(false);
 
   // Countdown state
@@ -105,11 +104,16 @@ export default function SignInPage() {
     }
   }, [urlParams.token, urlParams.callbackUrl, router]);
 
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setError("");
+    setEmailError("");
+    setEmail(e.target.value);
+  };
+
   const handleEmailSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!email || !email.includes("@")) {
-      setIsEmailValid(false);
       setError("Please enter a valid email address");
 
       return;
@@ -123,7 +127,6 @@ export default function SignInPage() {
 
       if (response.success) {
         setEmailSent(true);
-        setSuccessMessage(response.message);
         setCurrentStep("verification");
         setCanTryAgain(false);
         setCountdown(120);
@@ -240,23 +243,17 @@ export default function SignInPage() {
                 <Form validationBehavior="native" onSubmit={handleEmailSubmit}>
                   <Input
                     isRequired
-                    errorMessage={!isEmailValid ? "Please enter a valid email" : undefined}
-                    label="Email Address"
+                    errorMessage={emailError}
+                    isInvalid={!!emailError}
+                    label="Email"
                     name="email"
+                    placeholder="Enter your email"
+                    startContent={<Icon className="text-gray-400" icon="mdi:email-outline" />}
                     type="email"
                     value={email}
                     variant="bordered"
-                    onBlur={() =>
-                      handleEmailBlur(email, (message) => {
-                        setIsEmailValid(!message);
-                        setError(message || "");
-                      })
-                    }
-                    onValueChange={(value) => {
-                      setEmail(value);
-                      setIsEmailValid(true);
-                      setError("");
-                    }}
+                    onBlur={() => handleEmailBlur(email, setEmailError)}
+                    onChange={handleEmailChange}
                   />
                   <Button className="w-full" color="primary" isLoading={isSubmitting} type="submit">
                     Continue with Email
@@ -289,6 +286,14 @@ export default function SignInPage() {
                       errorMessage={!isVerificationCodeValid ? "Please enter a valid code" : undefined}
                       label="Verification Code"
                       name="verificationCode"
+                      placeholder="Enter your verification code"
+                      startContent={
+                        <Icon
+                          aria-hidden="true"
+                          className="h-4 w-4 text-gray-400 dark:text-gray-500 pointer-events-none flex-shrink-0"
+                          icon="heroicons:key"
+                        />
+                      }
                       type="text"
                       value={verificationCode}
                       variant="bordered"
@@ -362,9 +367,7 @@ export default function SignInPage() {
                     Continue with Email
                   </Button>
                 </div>
-                <p className="mt-3 text-center text-small">
-                  By signing in, you agree to our Terms and Privacy Policy.
-                </p>
+                <p className="mt-3 text-center text-small">By signing in, you agree to our Terms and Privacy Policy.</p>
               </m.div>
             </>
           )}
