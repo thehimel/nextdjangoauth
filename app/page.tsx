@@ -1,7 +1,7 @@
 "use client";
 
-import VantaHome from "@/modules/global/components/home/vanta-home";
+import FadedHome from "@/modules/global/components/home/faded-home";
 
 export default function Home() {
-  return <VantaHome />;
+  return <FadedHome />;
 }
