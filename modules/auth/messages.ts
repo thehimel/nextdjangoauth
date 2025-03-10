@@ -1,4 +1,4 @@
-export const authMessages = {
+export const AuthMessages = {
   LOADING: "Loading...",
 
   GOOGLE_AUTH_UNAVAILABLE: "Google authentication is currently unavailable. Please try again later.",
@@ -27,12 +27,12 @@ export const authMessages = {
 
 export const getSignInErrorMessage = (error: string | null): string => {
   const errorMessages: { [key: string]: string } = {
-    google_auth_unavailable: authMessages.GOOGLE_AUTH_UNAVAILABLE,
-    Verification: authMessages.VERIFY_MAGIC_LINK_ERROR,
-    AccessDenied: authMessages.ACCESS_DENIED,
-    Configuration: authMessages.CONFIGURATION_ERROR,
-    OAuthCallback: authMessages.OAUTH_CALLBACK_ERROR,
+    google_auth_unavailable: AuthMessages.GOOGLE_AUTH_UNAVAILABLE,
+    Verification: AuthMessages.VERIFY_MAGIC_LINK_ERROR,
+    AccessDenied: AuthMessages.ACCESS_DENIED,
+    Configuration: AuthMessages.CONFIGURATION_ERROR,
+    OAuthCallback: AuthMessages.OAUTH_CALLBACK_ERROR,
   };
 
-  return error ? errorMessages[error] || authMessages.UNEXPECTED_ERROR : authMessages.UNEXPECTED_ERROR;
+  return error ? errorMessages[error] || AuthMessages.UNEXPECTED_ERROR : AuthMessages.UNEXPECTED_ERROR;
 };

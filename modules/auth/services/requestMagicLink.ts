@@ -4,7 +4,7 @@ import axios, { AxiosError } from "axios";
 
 import { getError } from "@/modules/global/errors";
 import { authUrls } from "@/modules/auth/urls";
-import { authMessages } from "@/modules/auth/messages";
+import { AuthMessages } from "@/modules/auth/messages";
 
 export interface RequestMagicLinkResponseInterface {
   success: boolean;
@@ -25,13 +25,13 @@ export const requestMagicLink = async (email: string): Promise<RequestMagicLinkR
       { headers: { "Content-Type": "application/json" } },
     );
 
-    return { success: true, message: authMessages.REQUEST_MAGIC_LINK_SUCCESS };
+    return { success: true, message: AuthMessages.REQUEST_MAGIC_LINK_SUCCESS };
   } catch (error) {
     const refinedError = getError(error as AxiosError);
 
     return {
       success: false,
-      message: authMessages.REQUEST_MAGIC_LINK_ERROR,
+      message: AuthMessages.REQUEST_MAGIC_LINK_ERROR,
       error: {
         code: refinedError.code as string,
         provider: refinedError.provider as string,

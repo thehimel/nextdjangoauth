@@ -6,7 +6,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { authUrls } from "@/modules/auth/urls";
 import { ProviderId } from "@/modules/auth/settings";
 import { AuthErrorCodes } from "@/modules/auth/errors";
-import { authMessages } from "@/modules/auth/messages";
+import { AuthMessages } from "@/modules/auth/messages";
 
 interface UserResponse {
   pk: string;
@@ -64,7 +64,7 @@ const authConfig: NextAuthConfig = {
             refresh_token: data.refresh,
           };
         } catch (error) {
-          console.error(authMessages.MAGIC_LINK_VERIFICATION_FAILED, error);
+          console.error(AuthMessages.MAGIC_LINK_VERIFICATION_FAILED, error);
 
           return null;
         }

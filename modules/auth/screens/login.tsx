@@ -12,7 +12,7 @@ import LoadingScreen from "@/modules/auth/components/loading-screen";
 import { handleEmailBlur } from "@/modules/auth/validators/emailValidator";
 import { requestMagicLink } from "@/modules/auth/services/requestMagicLink";
 import { AuthText } from "@/modules/auth/settings";
-import { authMessages, getSignInErrorMessage } from "@/modules/auth/messages";
+import { AuthMessages, getSignInErrorMessage } from "@/modules/auth/messages";
 
 export default function LogInScreen() {
   const router = useRouter();
@@ -92,7 +92,7 @@ export default function LogInScreen() {
       })
         .then((response) => {
           if (response?.error) {
-            setError(authMessages.VERIFY_MAGIC_LINK_ERROR);
+            setError(AuthMessages.VERIFY_MAGIC_LINK_ERROR);
             setVerifyingToken(false);
           } else {
             router.push(urlParams.callbackUrl);
@@ -100,7 +100,7 @@ export default function LogInScreen() {
         })
         .catch((error) => {
           console.error("Error verifying magic link token:", error);
-          setError(authMessages.VERIFY_MAGIC_LINK_ERROR);
+          setError(AuthMessages.VERIFY_MAGIC_LINK_ERROR);
           setVerifyingToken(false);
         });
     }
@@ -116,7 +116,7 @@ export default function LogInScreen() {
     event.preventDefault();
 
     if (!email) {
-      setEmailError(authMessages.EMAIL_VALIDATION_ERROR);
+      setEmailError(AuthMessages.EMAIL_VALIDATION_ERROR);
 
       return;
     }
@@ -150,7 +150,7 @@ export default function LogInScreen() {
     event.preventDefault();
 
     if (!verificationCode) {
-      setVerificationCodeError(authMessages.VERIFICATION_CODE_EMPTY_ERROR);
+      setVerificationCodeError(AuthMessages.VERIFICATION_CODE_EMPTY_ERROR);
 
       return;
     }
@@ -167,7 +167,7 @@ export default function LogInScreen() {
       });
 
       if (result?.error) {
-        setVerificationCodeError(authMessages.VERIFICATION_CODE_VALIDATION_ERROR);
+        setVerificationCodeError(AuthMessages.VERIFICATION_CODE_VALIDATION_ERROR);
         setEmailSent(false);
       } else {
         router.push(urlParams.callbackUrl);
@@ -208,7 +208,7 @@ export default function LogInScreen() {
   );
 
   if (verifyingToken) {
-    return <LoadingScreen message={authMessages.LINK_VERIFICATION_IN_PROGRESS} />;
+    return <LoadingScreen message={AuthMessages.LINK_VERIFICATION_IN_PROGRESS} />;
   }
 
   return (
