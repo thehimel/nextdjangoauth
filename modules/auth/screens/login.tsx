@@ -11,7 +11,7 @@ import { Logo } from "@/modules/global/components/icons";
 import LoadingScreen from "@/modules/auth/components/loading-screen";
 import { handleEmailBlur } from "@/modules/auth/validators/emailValidator";
 import { requestMagicLink } from "@/modules/auth/services/requestMagicLink";
-import { AuthText } from "@/modules/auth/constants";
+import { AuthText, ProviderId } from "@/modules/auth/constants";
 import { AuthMessages, getSignInErrorMessage } from "@/modules/auth/constants/messages";
 
 export default function LogInScreen() {
@@ -85,7 +85,7 @@ export default function LogInScreen() {
   React.useEffect(() => {
     if (urlParams.token) {
       setVerifyingToken(true);
-      signIn("magic-link", {
+      signIn(ProviderId.MagicLink, {
         token: urlParams.token,
         redirect: false,
         callbackUrl: urlParams.callbackUrl,
@@ -160,7 +160,7 @@ export default function LogInScreen() {
       setError("");
 
       // Use the same signIn method as the magic link, but with the verification code as token
-      const result = await signIn("magic-link", {
+      const result = await signIn(ProviderId.MagicLink, {
         token: verificationCode, // Use the verification code as the token
         redirect: false,
         callbackUrl: urlParams.callbackUrl,
@@ -182,7 +182,7 @@ export default function LogInScreen() {
 
   const handleGoogleSignIn = () => {
     setIsSubmitting(true);
-    signIn("google", { callbackUrl: urlParams.callbackUrl });
+    signIn(ProviderId.Google, { callbackUrl: urlParams.callbackUrl });
   };
 
   const handleBackToEmail = () => {
