@@ -1,8 +1,6 @@
 "use client";
-
 import { Icon } from "@iconify/react";
 import { Button } from "@heroui/button";
-import { Link } from "@heroui/link";
 import { signOut, useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
@@ -11,12 +9,14 @@ import { PuffLoader } from "react-spinners";
 
 import { Logo } from "@/modules/global/components/icons";
 import { AuthText } from "@/modules/auth/constants";
+import { usePreviousUrl } from "@/modules/auth/hooks/usePreviousUrl";
 
-export default function LogOutScreen() {
+export default function LogOutScreen(): React.ReactElement {
   const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState<boolean>(false);
   const { status, data: session } = useSession();
   const router = useRouter();
+  const { goBack } = usePreviousUrl("/");
 
   const firstName = session?.user?.name?.split(" ")[0] || "";
 
@@ -53,11 +53,10 @@ export default function LogOutScreen() {
         <div className="flex flex-col gap-2">
           <Button
             key="go-back"
-            as={Link}
             color="success"
-            href={"/"}
             startContent={<Icon icon="solar:arrow-left-linear" width={20} />}
             variant="flat"
+            onPress={goBack}
           >
             Go Back
           </Button>
