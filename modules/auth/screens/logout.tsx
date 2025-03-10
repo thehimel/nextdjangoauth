@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react";
 import { PuffLoader } from "react-spinners";
 
 import { Logo } from "@/modules/global/components/icons";
-import { AuthText } from "@/modules/auth/settings";
+import { AuthText } from "@/modules/auth/constants";
 
 export default function LogOutScreen() {
   const { theme } = useTheme();

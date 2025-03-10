@@ -4,7 +4,7 @@ import axios, { AxiosError } from "axios";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { authUrls } from "@/modules/auth/urls";
-import { ProviderId } from "@/modules/auth/settings";
+import { ProviderId } from "@/modules/auth/constants";
 import { AuthErrorCodes } from "@/modules/auth/errors";
 import { AuthMessages } from "@/modules/auth/messages";
 

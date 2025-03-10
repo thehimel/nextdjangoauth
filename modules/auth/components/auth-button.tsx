@@ -11,7 +11,7 @@ import { PuffLoader } from "react-spinners";
 
 import { Colors, Themes } from "@/modules/theme/constants";
 import { siteConfig } from "@/modules/global/config/site";
-import { AuthText } from "@/modules/auth/settings";
+import { AuthText } from "@/modules/auth/constants";
 
 const AuthButton = () => {
   const { theme } = useTheme();

@@ -11,7 +11,7 @@ import { Logo } from "@/modules/global/components/icons";
 import LoadingScreen from "@/modules/auth/components/loading-screen";
 import { handleEmailBlur } from "@/modules/auth/validators/emailValidator";
 import { requestMagicLink } from "@/modules/auth/services/requestMagicLink";
-import { AuthText } from "@/modules/auth/settings";
+import { AuthText } from "@/modules/auth/constants";
 import { AuthMessages, getSignInErrorMessage } from "@/modules/auth/messages";
 
 export default function LogInScreen() {
