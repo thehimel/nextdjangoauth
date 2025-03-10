@@ -56,7 +56,7 @@ export default function LogOutScreen() {
             color="danger"
             startContent={<Icon className="rotate-180" icon="solar:minus-circle-line-duotone" width={24} />}
             variant="flat"
-            onClick={() => signOut({ redirectTo: "/" })}
+            onPress={() => signOut({ redirectTo: "/" })}
           >
             Confirm
           </Button>
