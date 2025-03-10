@@ -52,23 +52,23 @@ export default function LogOutScreen() {
       {status === "authenticated" && (
         <div className="flex flex-col gap-2">
           <Button
-            key="signout"
+            key="go-back"
+            as={Link}
+            color="success"
+            href={"/"}
+            startContent={<Icon icon="solar:arrow-left-linear" width={20} />}
+            variant="flat"
+          >
+            Go Back
+          </Button>
+          <Button
+            key="confirm"
             color="danger"
-            startContent={<Icon className="rotate-180" icon="solar:minus-circle-line-duotone" width={24} />}
+            startContent={<Icon icon="twemoji:broken-heart" width={20} />}
             variant="flat"
             onPress={() => signOut({ redirectTo: "/" })}
           >
             Confirm
-          </Button>
-          <Button
-            key="cancel"
-            as={Link}
-            color="success"
-            href={"/"}
-            startContent={<Icon icon="radix-icons:home" width={20} />}
-            variant="flat"
-          >
-            Cancel
           </Button>
         </div>
       )}
