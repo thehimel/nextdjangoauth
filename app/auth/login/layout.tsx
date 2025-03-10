@@ -2,7 +2,7 @@ import React, { PropsWithChildren, Suspense } from "react";
 
 import LoadingScreen from "@/modules/auth/components/loading-screen";
 
-export default function SignInLayout({ children }: PropsWithChildren) {
+export default function LogInLayout({ children }: PropsWithChildren) {
   return (
     <section className="flex pt-16 pb-24 h-full w-full items-center justify-center">
       <div className="flex h-full w-full items-center justify-center">

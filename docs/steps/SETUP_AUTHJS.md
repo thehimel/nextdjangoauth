@@ -25,8 +25,8 @@
 ## Configure the Sign In and Sign Out Pages
 
 * To set up the sign in and sign out routes, configure the following pages:
-  * [signin](../../app/auth/signin)
-  * [signout](../../app/auth/signout)
+  * [login](../../app/auth/login)
+  * [logout](../../app/auth/logout)
 * Define `signIn` and `signOut` pages in [auth/index.ts](../../modules/auth/index.ts)
 * Add `signin` and `signout` links in [site.ts](../../modules/global/config/site.ts)
 * Add the [auth-button.tsx](../../modules/auth/components/auth-button.tsx) in navbar.

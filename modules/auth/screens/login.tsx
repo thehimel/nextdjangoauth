@@ -14,7 +14,7 @@ import { requestMagicLink } from "@/modules/auth/services/requestMagicLink";
 import { AuthText } from "@/modules/auth/settings";
 import { authMessages, getSignInErrorMessage } from "@/modules/auth/messages";
 
-export default function SignInPage() {
+export default function LogInScreen() {
   const router = useRouter();
   const searchParams = useSearchParams();
 

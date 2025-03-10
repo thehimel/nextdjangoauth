@@ -12,7 +12,7 @@ import { PuffLoader } from "react-spinners";
 import { Logo } from "@/modules/global/components/icons";
 import { AuthText } from "@/modules/auth/settings";
 
-export default function SignOutPage() {
+export default function LogOutScreen() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const { status, data: session } = useSession();
