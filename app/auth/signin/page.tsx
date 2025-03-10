@@ -11,6 +11,7 @@ import { Logo } from "@/modules/global/components/icons";
 import LoadingScreen from "@/modules/auth/components/loading-screen";
 import { handleEmailBlur } from "@/modules/auth/validators/emailValidator";
 import { requestMagicLink } from "@/modules/auth/services/requestMagicLink";
+import { AuthText } from "@/modules/auth/settings";
 import { authMessages, getSignInErrorMessage } from "@/modules/auth/messages";
 
 export default function SignInPage() {
@@ -214,7 +215,7 @@ export default function SignInPage() {
     <ResizablePanel>
       <div className="flex flex-col items-center">
         <Logo size={60} />
-        <h1 className="text-xl font-medium mt-2 mb-4">Sign In</h1>
+        <h1 className="text-xl font-medium mt-2 mb-4">{AuthText.LogIn}</h1>
       </div>
 
       {error && (
@@ -383,7 +384,7 @@ export default function SignInPage() {
                     Continue with Email
                   </Button>
                 </div>
-                <p className="mt-3 text-center text-small">By signing in, you agree to our Terms and Privacy Policy.</p>
+                <p className="mt-3 text-center text-small">By logging in, you agree to our Terms and Privacy Policy.</p>
               </m.div>
             </>
           )}

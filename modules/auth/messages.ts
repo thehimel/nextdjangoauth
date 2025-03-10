@@ -17,7 +17,7 @@ export const authMessages = {
     "The verification link is either invalid or has expired. " +
     "Please try signing in with your email again to request a new link.",
 
-  ACCESS_DENIED: "You do not have permission to sign in.",
+  ACCESS_DENIED: "You do not have permission to log in.",
   CONFIGURATION_ERROR: "There is a problem with the authentication configuration.",
   OAUTH_CALLBACK_ERROR: "There was a problem with the OAuth provider.",
 

@@ -11,6 +11,7 @@ import { PuffLoader } from "react-spinners";
 
 import { Colors, Themes } from "@/modules/theme/constants";
 import { siteConfig } from "@/modules/global/config/site";
+import { AuthText } from "@/modules/auth/settings";
 
 const AuthButton = () => {
   const { theme } = useTheme();
@@ -33,7 +34,7 @@ const AuthButton = () => {
           startContent={<Icon icon="line-md:login" width={20} />}
           variant="flat"
         >
-          Signin
+          {AuthText.LogIn}
         </Button>
       )}
       {status === "authenticated" && (
@@ -45,7 +46,7 @@ const AuthButton = () => {
           }
           variant="flat"
         >
-          Signout
+          {AuthText.LogOut}
         </Button>
       )}
     </>

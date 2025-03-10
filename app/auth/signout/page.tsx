@@ -10,6 +10,7 @@ import React, { useEffect, useState } from "react";
 import { PuffLoader } from "react-spinners";
 
 import { Logo } from "@/modules/global/components/icons";
+import { AuthText } from "@/modules/auth/settings";
 
 export default function SignOutPage() {
   const { theme } = useTheme();
@@ -36,10 +37,10 @@ export default function SignOutPage() {
     <>
       <div className="flex flex-col items-center">
         <Logo className="" size={60} />
-        <p className="text-xl font-medium mt-2">Sign Out</p>
+        <p className="text-xl font-medium mt-2">{AuthText.LogOut}</p>
         {status === "authenticated" && (
           <p className="text-small text-default-500 mt-2 text-center">
-            Are you sure you want to sign out{firstName && ` ${firstName}`}?
+            Are you sure you want to log out{firstName && ` ${firstName}`}?
           </p>
         )}
       </div>
