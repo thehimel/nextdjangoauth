@@ -4,7 +4,7 @@ import axios, { AxiosError } from "axios";
 
 import { getError } from "@/modules/global/errors";
 import { AuthUrls } from "@/modules/auth/urls";
-import { AuthMessages } from "@/modules/auth/messages";
+import { AuthMessages } from "@/modules/auth/constants/messages";
 
 export interface RequestMagicLinkResponseInterface {
   success: boolean;

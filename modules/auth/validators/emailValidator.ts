@@ -1,7 +1,7 @@
 import React from "react";
 import { z } from "zod";
 
-import { AuthMessages } from "@/modules/auth/messages";
+import { AuthMessages } from "@/modules/auth/constants/messages";
 
 export const handleEmailBlur = (email: string, setError: React.Dispatch<React.SetStateAction<string>>) => {
   const errorMessage = AuthMessages.EMAIL_VALIDATION_ERROR;

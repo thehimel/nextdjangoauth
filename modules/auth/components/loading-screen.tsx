@@ -1,7 +1,7 @@
 import React from "react";
 import { Spinner } from "@heroui/spinner";
 
-import { AuthMessages } from "@/modules/auth/messages";
+import { AuthMessages } from "@/modules/auth/constants/messages";
 
 interface LoadingScreenProps {
   message?: string; // The message to be displayed while loading

@@ -12,7 +12,7 @@ import LoadingScreen from "@/modules/auth/components/loading-screen";
 import { handleEmailBlur } from "@/modules/auth/validators/emailValidator";
 import { requestMagicLink } from "@/modules/auth/services/requestMagicLink";
 import { AuthText } from "@/modules/auth/constants";
-import { AuthMessages, getSignInErrorMessage } from "@/modules/auth/messages";
+import { AuthMessages, getSignInErrorMessage } from "@/modules/auth/constants/messages";
 
 export default function LogInScreen() {
   const router = useRouter();
