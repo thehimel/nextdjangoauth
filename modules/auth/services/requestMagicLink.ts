@@ -21,7 +21,7 @@ export const requestMagicLink = async (email: string): Promise<RequestMagicLinkR
   try {
     await axios.post(
       AuthUrls.REQUEST_MAGIC_LINK_URL,
-      { email: email },
+      { email: email, login_path: AuthUrls.SIGN_IN_URL },
       { headers: { "Content-Type": "application/json" } },
     );
 
