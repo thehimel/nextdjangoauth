@@ -4,3 +4,8 @@ export enum AuthText {
   SignIn = "Sign In",
   SignOut = "Sign Out",
 }
+
+export enum ProviderId {
+  Google = "google",
+  MagicLink = "magic-link",
+}

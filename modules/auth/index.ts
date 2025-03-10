@@ -4,6 +4,9 @@ import axios, { AxiosError } from "axios";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { authUrls } from "@/modules/auth/urls";
+import { ProviderId } from "@/modules/auth/settings";
+import { AuthErrorCodes } from "@/modules/auth/errors";
+import { authMessages } from "@/modules/auth/messages";
 
 interface UserResponse {
   pk: string;
@@ -32,7 +35,7 @@ const authConfig: NextAuthConfig = {
     }),
 
     CredentialsProvider({
-      id: "magic-link",
+      id: ProviderId.MagicLink,
       name: "Magic Link",
       credentials: {
         token: { label: "Magic Link Token", type: "text" },
@@ -61,7 +64,7 @@ const authConfig: NextAuthConfig = {
             refresh_token: data.refresh,
           };
         } catch (error) {
-          console.error("Magic link verification failed:", error);
+          console.error(authMessages.MAGIC_LINK_VERIFICATION_FAILED, error);
 
           return null;
         }
@@ -72,12 +75,12 @@ const authConfig: NextAuthConfig = {
   pages: {
     signIn: authUrls.SIGN_IN_URL,
     signOut: authUrls.SIGN_OUT_URL,
-    error: authUrls.SIGN_IN_URL,
+    error: authUrls.ERROR_URL,
   },
 
   callbacks: {
     async signIn({ account, profile }) {
-      if (account?.provider !== "google") return true;
+      if (account?.provider !== ProviderId.Google) return true;
 
       try {
         await axios.post(
@@ -91,23 +94,23 @@ const authConfig: NextAuthConfig = {
         if (error instanceof AxiosError && error.response?.status === 400) {
           const errorData = error.response.data;
 
-          if (errorData.code === "email_registered_with_email_login") {
+          if (errorData.code === AuthErrorCodes.EmailRegisteredWithEmailLogin) {
             const encodedEmail = encodeURIComponent(profile?.email ?? "");
 
-            return `/auth/signin?error=email_registered_with_email_login&email=${encodedEmail}`;
+            return `${authUrls.ERROR_URL}?error=${AuthErrorCodes.EmailRegisteredWithEmailLogin}&email=${encodedEmail}`;
           }
         }
 
         // Return a specific error code for Google Auth API unavailability
-        return `/auth/signin?error=google_auth_unavailable`;
+        return `${authUrls.ERROR_URL}?error=${AuthErrorCodes.GoogleAuthUnavailable}`;
       }
     },
 
     async jwt({ token, account, user }) {
       if (!account || !user) return token;
 
-      const isGoogleAuth = account.provider === "google";
-      const isMagicLink = account.provider === "magic-link";
+      const isGoogleAuth = account.provider === ProviderId.Google;
+      const isMagicLink = account.provider === ProviderId.MagicLink;
 
       return {
         ...token,

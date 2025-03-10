@@ -12,6 +12,7 @@ export const authMessages = {
     "Your sign-in link has been sent to your email. Please check your inbox and click on the link to log in. " +
     "If it doesn’t show up, check your spam folder or try sending it again.",
   REQUEST_MAGIC_LINK_ERROR: "Sorry, we're having trouble sending the verification link now. Please try again later.",
+  MAGIC_LINK_VERIFICATION_FAILED: "Magic link verification failed:",
 
   VERIFY_MAGIC_LINK_ERROR:
     "The verification link is either invalid or has expired. " +
