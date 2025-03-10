@@ -1,4 +1,4 @@
-import FadedHome from "@/modules/global/components/home/faded-home";
+import FadedHome from "@/modules/global/screens/home/faded-home";
 
 export default function HomePage() {
   return <FadedHome />;

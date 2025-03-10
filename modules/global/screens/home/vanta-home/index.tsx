@@ -8,7 +8,7 @@ import { button as buttonStyles } from "@heroui/theme";
 import { siteConfig } from "@/modules/global/config/site";
 import { title, subtitle } from "@/modules/theme/primitives";
 import { GithubIcon } from "@/modules/global/components/icons";
-import { VantaBackground } from "@/modules/global/components/home/vanta-home/vanta-background";
+import { VantaBackground } from "@/modules/global/screens/home/vanta-home/vanta-background";
 
 export default function VantaHome() {
   return (
