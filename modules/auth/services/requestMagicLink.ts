@@ -3,7 +3,7 @@
 import axios, { AxiosError } from "axios";
 
 import { getError } from "@/modules/global/errors";
-import { AuthUrls } from "@/modules/auth/urls";
+import { AuthUrls } from "@/modules/auth/constants/urls";
 import { AuthMessages } from "@/modules/auth/constants/messages";
 
 export interface RequestMagicLinkResponseInterface {

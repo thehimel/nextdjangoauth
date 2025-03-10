@@ -3,7 +3,7 @@ import Google from "next-auth/providers/google";
 import axios, { AxiosError } from "axios";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import { AuthUrls } from "@/modules/auth/urls";
+import { AuthUrls } from "@/modules/auth/constants/urls";
 import { ProviderId } from "@/modules/auth/constants";
 import { AuthErrorCodes } from "@/modules/auth/constants/errorCodes";
 import { AuthMessages } from "@/modules/auth/constants/messages";
