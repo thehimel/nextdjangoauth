@@ -5,7 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 import { AuthUrls } from "@/modules/auth/urls";
 import { ProviderId } from "@/modules/auth/constants";
-import { AuthErrorCodes } from "@/modules/auth/errors";
+import { AuthErrorCodes } from "@/modules/auth/constants/errorCodes";
 import { AuthMessages } from "@/modules/auth/messages";
 
 interface UserResponse {
