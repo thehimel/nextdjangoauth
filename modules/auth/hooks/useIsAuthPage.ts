@@ -1,8 +1,8 @@
 import { usePathname } from "next/navigation";
 
-import { authUrls } from "@/modules/auth/urls";
+import { AuthUrls } from "@/modules/auth/urls";
 
-const AUTH_PATHS: readonly string[] = [authUrls.SIGN_IN_URL, authUrls.SIGN_OUT_URL] as const;
+const AUTH_PATHS: readonly string[] = [AuthUrls.SIGN_IN_URL, AuthUrls.SIGN_OUT_URL] as const;
 
 export const useIsAuthPage = (): boolean => {
   const pathname: string | null = usePathname();

@@ -3,7 +3,7 @@ import Google from "next-auth/providers/google";
 import axios, { AxiosError } from "axios";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import { authUrls } from "@/modules/auth/urls";
+import { AuthUrls } from "@/modules/auth/urls";
 import { ProviderId } from "@/modules/auth/constants";
 import { AuthErrorCodes } from "@/modules/auth/errors";
 import { AuthMessages } from "@/modules/auth/messages";
@@ -45,7 +45,7 @@ const authConfig: NextAuthConfig = {
 
         try {
           const { data } = await axios.post<AuthResponse>(
-            authUrls.VERIFY_MAGIC_LINK_URL,
+            AuthUrls.VERIFY_MAGIC_LINK_URL,
             { token: credentials.token },
             { headers: { "Content-Type": "application/json" } },
           );
@@ -73,9 +73,9 @@ const authConfig: NextAuthConfig = {
   ],
 
   pages: {
-    signIn: authUrls.SIGN_IN_URL,
-    signOut: authUrls.SIGN_OUT_URL,
-    error: authUrls.ERROR_URL,
+    signIn: AuthUrls.SIGN_IN_URL,
+    signOut: AuthUrls.SIGN_OUT_URL,
+    error: AuthUrls.ERROR_URL,
   },
 
   callbacks: {
@@ -84,7 +84,7 @@ const authConfig: NextAuthConfig = {
 
       try {
         await axios.post(
-          authUrls.GOOGLE_AUTH_API_URL,
+          AuthUrls.GOOGLE_AUTH_API_URL,
           { access_token: account.access_token },
           { headers: { "Content-Type": "application/json" } },
         );
@@ -97,12 +97,12 @@ const authConfig: NextAuthConfig = {
           if (errorData.code === AuthErrorCodes.EmailRegisteredWithEmailLogin) {
             const encodedEmail = encodeURIComponent(profile?.email ?? "");
 
-            return `${authUrls.ERROR_URL}?error=${AuthErrorCodes.EmailRegisteredWithEmailLogin}&email=${encodedEmail}`;
+            return `${AuthUrls.ERROR_URL}?error=${AuthErrorCodes.EmailRegisteredWithEmailLogin}&email=${encodedEmail}`;
           }
         }
 
         // Return a specific error code for Google Auth API unavailability
-        return `${authUrls.ERROR_URL}?error=${AuthErrorCodes.GoogleAuthUnavailable}`;
+        return `${AuthUrls.ERROR_URL}?error=${AuthErrorCodes.GoogleAuthUnavailable}`;
       }
     },
 

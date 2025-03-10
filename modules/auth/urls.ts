@@ -1,6 +1,6 @@
 import { CONFIG } from "@/modules/global/config/env";
 
-export const authUrls = {
+export const AuthUrls = {
   SIGN_IN_URL: "/auth/login",
   SIGN_OUT_URL: "/auth/logout",
   ERROR_URL: "/auth/login",

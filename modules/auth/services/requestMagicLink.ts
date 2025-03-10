@@ -3,7 +3,7 @@
 import axios, { AxiosError } from "axios";
 
 import { getError } from "@/modules/global/errors";
-import { authUrls } from "@/modules/auth/urls";
+import { AuthUrls } from "@/modules/auth/urls";
 import { AuthMessages } from "@/modules/auth/messages";
 
 export interface RequestMagicLinkResponseInterface {
@@ -20,7 +20,7 @@ export interface RequestMagicLinkResponseInterface {
 export const requestMagicLink = async (email: string): Promise<RequestMagicLinkResponseInterface> => {
   try {
     await axios.post(
-      authUrls.REQUEST_MAGIC_LINK_URL,
+      AuthUrls.REQUEST_MAGIC_LINK_URL,
       { email: email },
       { headers: { "Content-Type": "application/json" } },
     );
