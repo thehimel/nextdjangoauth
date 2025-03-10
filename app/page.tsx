@@ -1,7 +1,5 @@
-"use client";
-
 import FadedHome from "@/modules/global/components/home/faded-home";
 
-export default function Home() {
+export default function HomePage() {
   return <FadedHome />;
 }
