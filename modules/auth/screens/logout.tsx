@@ -39,7 +39,7 @@ export default function LogOutScreen(): React.ReactElement {
         <Logo className="" size={60} />
         <p className="text-xl font-medium mt-2">{AuthText.LogOut}</p>
         {status === "authenticated" && (
-          <p className="text-small text-default-500 mt-2 text-center">
+          <p className="text-small text-default-500 mt-2 mb-4 text-center">
             Are you sure you want to log out{firstName && ` ${firstName}`}?
           </p>
         )}
