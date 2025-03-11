@@ -11,7 +11,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ message = AuthMessages.LO
   return (
     <div className="w-full max-w-md">
       <div className="flex flex-col items-center gap-4 p-8">
-        <Spinner color="primary" size="lg" />
+        <Spinner color="current" size="lg" />
         <p className="text-center">{message}</p>
       </div>
     </div>
