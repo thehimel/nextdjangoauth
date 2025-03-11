@@ -261,8 +261,8 @@ export default function LogInScreen() {
                     onChange={handleEmailChange}
                   />
                   <Button
-                    className="w-full"
-                    color="primary"
+                    fullWidth
+                    className="bg-default-foreground text-small font-medium text-background"
                     isDisabled={!email || !!emailError}
                     isLoading={isSubmitting}
                     type="submit"
@@ -315,15 +315,21 @@ export default function LogInScreen() {
                       }}
                     />
                     <Button
-                      className="w-full"
-                      color="primary"
+                      fullWidth
+                      className="bg-default-foreground text-small font-medium text-background"
                       isDisabled={!verificationCode || !!verificationCodeError}
                       isLoading={isSubmitting}
                       type="submit"
                     >
                       Continue
                     </Button>
-                    <Button className="w-full" isDisabled={!canTryAgain} variant="flat" onPress={handleBackToEmail}>
+                    <Button
+                      fullWidth
+                      className="border-1 text-small font-medium"
+                      isDisabled={!canTryAgain}
+                      variant="bordered"
+                      onPress={handleBackToEmail}
+                    >
                       {canTryAgain
                         ? "Try Again"
                         : `Try Again (${Math.floor(countdown / 60)}:${(countdown % 60).toString().padStart(2, '0')})`
@@ -338,8 +344,9 @@ export default function LogInScreen() {
                   {orDivider}
                   <Button
                     fullWidth
+                    className="border-1 text-small font-medium"
                     startContent={<Icon className="text-default-500" icon="solar:arrow-left-linear" width={18} />}
-                    variant="flat"
+                    variant="bordered"
                     onPress={() => {
                       setIsFormVisible(false);
                       setCurrentStep("email");
@@ -355,9 +362,9 @@ export default function LogInScreen() {
             <>
               <Button
                 fullWidth
+                className="bg-default-foreground text-small font-medium text-background"
                 isLoading={isSubmitting}
-                startContent={<Icon icon="flat-color-icons:google" width={24} />}
-                variant="flat"
+                startContent={<Icon icon="ri:google-fill" width={24} />}
                 onPress={handleGoogleSignIn}
               >
                 Continue with Google
@@ -373,9 +380,10 @@ export default function LogInScreen() {
                 <div className="flex flex-col gap-2">
                   <Button
                     fullWidth
-                    color="primary"
+                    className="border-1 text-small font-medium"
                     startContent={<Icon className="pointer-events-none text-2xl" icon="solar:letter-bold" />}
                     type="button"
+                    variant="bordered"
                     onPress={() => {
                       setIsFormVisible(true);
                       setError("");
