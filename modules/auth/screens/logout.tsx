@@ -1,4 +1,5 @@
 "use client";
+
 import { Icon } from "@iconify/react";
 import { Button } from "@heroui/button";
 import { signOut, useSession } from "next-auth/react";
@@ -8,7 +9,7 @@ import React, { useEffect, useState } from "react";
 import { PuffLoader } from "react-spinners";
 
 import { Logo } from "@/modules/global/components/icons";
-import { AuthText } from "@/modules/auth/constants";
+import { siteConfig } from "@/modules/global/config/site";
 import { usePreviousUrl } from "@/modules/auth/hooks/usePreviousUrl";
 
 export default function LogOutScreen(): React.ReactElement {
@@ -37,7 +38,7 @@ export default function LogOutScreen(): React.ReactElement {
     <>
       <div className="flex flex-col items-center">
         <Logo className="" size={60} />
-        <p className="text-xl font-medium mt-2">{AuthText.LogOut}</p>
+        <p className="text-xl font-medium mt-2">{siteConfig.name}</p>
         {status === "authenticated" && (
           <p className="text-small text-default-500 mt-2 mb-4 text-center">
             Are you sure you want to log out{firstName && ` ${firstName}`}?

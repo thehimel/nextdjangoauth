@@ -11,8 +11,9 @@ import { Logo } from "@/modules/global/components/icons";
 import LoadingScreen from "@/modules/auth/components/loading-screen";
 import { handleEmailBlur } from "@/modules/auth/validators/emailValidator";
 import { requestMagicLink } from "@/modules/auth/services/requestMagicLink";
-import { AuthText, ProviderId } from "@/modules/auth/constants";
+import { ProviderId } from "@/modules/auth/constants";
 import { AuthMessages, getSignInErrorMessage } from "@/modules/auth/constants/messages";
+import { siteConfig } from "@/modules/global/config/site";
 
 export default function LogInScreen() {
   const router = useRouter();
@@ -215,7 +216,7 @@ export default function LogInScreen() {
     <ResizablePanel>
       <div className="flex flex-col items-center">
         <Logo size={60} />
-        <h1 className="text-xl font-medium mt-2 mb-4">{AuthText.LogIn}</h1>
+        <h1 className="text-xl font-medium mt-2 mb-4">{siteConfig.name}</h1>
       </div>
 
       {error && (
