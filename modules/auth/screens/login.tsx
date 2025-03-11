@@ -219,17 +219,17 @@ export default function LogInScreen() {
       </div>
 
       {error && (
-        <div className="p-4 mb-4 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-800">
+        <div className="p-4 mb-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/30 border border-zinc-200 dark:border-zinc-800">
           <div className="flex items-center justify-center">
             <div className="flex-shrink-0">
               <Icon
                 aria-hidden="true"
-                className="h-5 w-5 text-red-500 dark:text-red-400"
+                className="h-5 w-5 text-zinc-600 dark:text-zinc-400"
                 icon="heroicons:exclamation-circle"
               />
             </div>
             <div className="ml-3">
-              <p className="text-sm font-medium text-red-600 dark:text-red-400">{error}</p>
+              <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">{error}</p>
             </div>
           </div>
         </div>
@@ -273,17 +273,17 @@ export default function LogInScreen() {
               ) : (
                 <>
                   {emailSent && (
-                    <div className="p-4 mb-1 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-200 dark:border-green-800">
+                    <div className="p-4 mb-1 rounded-lg bg-zinc-50 dark:bg-zinc-900/30 border border-zinc-200 dark:border-zinc-800">
                       <div className="flex items-center justify-center">
                         <div className="flex-shrink-0">
                           <Icon
                             aria-hidden="true"
-                            className="h-5 w-5 text-green-500 dark:text-green-400"
+                            className="h-5 w-5 text-zinc-600 dark:text-zinc-400"
                             icon="heroicons:check-circle"
                           />
                         </div>
                         <div className="ml-3">
-                          <p className="text-sm font-medium text-green-600 dark:text-green-400">
+                          <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
                             We have sent a verification code to {email}. You can either enter the code below or click in
                             the email.
                           </p>
