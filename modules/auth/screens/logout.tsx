@@ -52,19 +52,18 @@ export default function LogOutScreen(): React.ReactElement {
       {status === "authenticated" && (
         <div className="flex flex-col gap-2">
           <Button
-            key="go-back"
-            color="success"
+            fullWidth
+            className="bg-default-foreground text-small font-medium text-background"
             startContent={<Icon icon="solar:arrow-left-linear" width={20} />}
-            variant="flat"
             onPress={goBack}
           >
             Go Back
           </Button>
           <Button
-            key="confirm"
-            color="danger"
-            startContent={<Icon icon="twemoji:broken-heart" width={20} />}
-            variant="flat"
+            fullWidth
+            className="border-1 text-small font-medium"
+            startContent={<Icon icon="mdi:heart-broken" width={20} />}
+            variant="bordered"
             onPress={() => signOut({ redirectTo: "/" })}
           >
             Confirm
