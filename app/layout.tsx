@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import CookieConsent from "@/modules/legal/components/cookie-consent";
 
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Navbar />
             <main className="container mx-auto max-w-7xl px-6 flex-grow">{children}</main>
             <Footer />
+            <CookieConsent />
           </div>
         </Providers>
       </body>
