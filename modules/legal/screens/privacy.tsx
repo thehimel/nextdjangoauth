@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
   const h2ClassName = "text-2xl text-center font-bold mb-4";
   const topLevelUlClassName = "list-disc pl-4 space-y-2";
   const secondLevelUlClassName = "list-disc pl-4 space-y-1 pt-1";
-  const privacyPolicyUpdateDate: Date = new Date("2025-03-12");
+  const privacyPolicyUpdateDate: Date = new Date("2025-03-13");
 
   return (
     <div className="max-w-4xl mx-auto pt-12 px-4 sm:px-6 lg:px-8 text-justify">
@@ -190,8 +190,21 @@ const PrivacyPolicy = () => {
           </ul>
         </section>
 
+        <section className="mb-10">
+          <h2 className={h2ClassName}>13. Changes to This Privacy Policy</h2>
+          <ul className={topLevelUlClassName}>
+            <li>
+              We may update this Privacy Policy from time to time to reflect changes in law, regulation, our data
+              practices, or our business operations. Any changes will become effective when we post the revised Privacy
+              Policy on our Services. Your continued use of our Services following these changes means that you accept
+              the revised Privacy Policy. We will notify you of any material changes to this Privacy Policy through our
+              Services or other communication channels where required by applicable law.
+            </li>
+          </ul>
+        </section>
+
         <section className="mb-4">
-          <h2 className={h2ClassName}>13. Contact Us</h2>
+          <h2 className={h2ClassName}>14. Contact Us</h2>
           <ul className={topLevelUlClassName}>
             <li>
               If you have any questions about this Privacy Policy, please contact us at&nbsp;

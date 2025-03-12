@@ -12,7 +12,7 @@ const TermsAndConditions = () => {
   const dataProtectionEmail: string = companyInfo.contact.dataProtectionEmail;
   const legalEmail: string = companyInfo.contact.legalEmail;
   const termText = TermType.Organization;
-  const termsAndConditionsUpdateDate: Date = new Date("2025-03-12");
+  const termsAndConditionsUpdateDate: Date = new Date("2025-03-13");
 
   const h2ClassName = "text-2xl text-center font-bold mb-4";
   const topLevelUlClassName = "list-disc pl-4 space-y-2";
@@ -258,8 +258,20 @@ const TermsAndConditions = () => {
           </ul>
         </section>
 
+        <section className="mb-10">
+          <h2 className={h2ClassName}>18. Changes to These Terms and Conditions</h2>
+          <ul className={topLevelUlClassName}>
+            <li>
+              We may update these Terms and Conditions from time to time to reflect changes in law, regulation, or our
+              business practices. Any changes will become effective when we post the revised Terms and Conditions on our
+              Services. Your continued use of our Services following these changes means that you accept the revised
+              Terms and Conditions.
+            </li>
+          </ul>
+        </section>
+
         <section className="mb-4">
-          <h2 className={h2ClassName}>18. Contact Information</h2>
+          <h2 className={h2ClassName}>19. Contact Information</h2>
           <ul className={topLevelUlClassName}>
             <li>
               If you have any questions about these Terms, please contact us at <EmailLink email={legalEmail} />.
