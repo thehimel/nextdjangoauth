@@ -1,6 +1,7 @@
 import React from "react";
 
 import { companyInfo } from "@/modules/global/config/company";
+import { formatFullDate } from "@/modules/global/utils";
 import { TermType } from "@/modules/legal/constants";
 import EmailLink from "@/modules/legal/components/email-link";
 
@@ -11,6 +12,7 @@ const TermsAndConditions = () => {
   const dataProtectionEmail: string = companyInfo.contact.dataProtectionEmail;
   const legalEmail: string = companyInfo.contact.legalEmail;
   const termText = TermType.Organization;
+  const termsAndConditionsUpdateDate: Date = new Date("2025-03-12");
 
   const h2ClassName = "text-2xl text-center font-bold mb-4";
   const topLevelUlClassName = "list-disc pl-4 space-y-2";
@@ -20,7 +22,7 @@ const TermsAndConditions = () => {
     <div className="max-w-4xl mx-auto pt-12 px-4 sm:px-6 lg:px-8 text-justify">
       <div className="text-center mb-12">
         <h1 className="text-3xl font-extrabold sm:text-4xl">Terms and Conditions</h1>
-        <p className="mt-4 text-lg text-gray-500">Last Updated: March 12, 2025</p>
+        <p className="mt-4 text-lg text-gray-500">Last Updated: {formatFullDate(termsAndConditionsUpdateDate)}</p>
       </div>
 
       <div className="prose prose-lg prose-indigo mx-auto">

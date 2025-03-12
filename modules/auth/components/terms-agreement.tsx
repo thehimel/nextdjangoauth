@@ -3,6 +3,7 @@ import { Link, useDisclosure } from "@heroui/react";
 
 import DynamicModal from "@/modules/auth/components/dynamic-modal";
 import TermsAndConditions from "@/modules/legal/screens/terms";
+import PrivacyPolicy from "@/modules/legal/screens/privacy";
 
 interface TermsAgreementProps {
   className?: string;
@@ -35,13 +36,5 @@ export function TermsAgreement({ className }: TermsAgreementProps) {
         <PrivacyPolicy />
       </DynamicModal>
     </>
-  );
-}
-
-function PrivacyPolicy() {
-  return (
-    <div className="prose dark:prose-invert max-w-none">
-      <h2>Privacy Policy</h2>
-    </div>
   );
 }
