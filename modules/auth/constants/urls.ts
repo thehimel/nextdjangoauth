@@ -8,3 +8,8 @@ export const AuthUrls = {
   REQUEST_MAGIC_LINK_URL: `${CONFIG.DJANGO_BACKEND_URL}/api/auth/magic-link/`,
   VERIFY_MAGIC_LINK_URL: `${CONFIG.DJANGO_BACKEND_URL}/api/auth/magic-link/verify/`,
 };
+
+export const LegalUrls = {
+  TERMS_URL: "/legal/terms",
+  PRIVACY_URL: "/legal/privacy",
+};

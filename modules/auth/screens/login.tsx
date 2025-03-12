@@ -14,6 +14,7 @@ import { requestMagicLink } from "@/modules/auth/services/requestMagicLink";
 import { ProviderId } from "@/modules/auth/constants";
 import { AuthMessages, getSignInErrorMessage } from "@/modules/auth/constants/messages";
 import { siteConfig } from "@/modules/global/config/site";
+import { TermsAgreement } from "@/modules/auth/components/terms-agreement";
 
 export default function LogInScreen() {
   const router = useRouter();
@@ -393,7 +394,7 @@ export default function LogInScreen() {
                     Continue with Email
                   </Button>
                 </div>
-                <p className="mt-3 text-center text-small">By logging in, you agree to our Terms and Privacy Policy.</p>
+                <TermsAgreement className="mt-3" />
               </m.div>
             </>
           )}
