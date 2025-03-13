@@ -15,7 +15,7 @@ const PrivacyPolicy = () => {
   const privacyPolicyUpdateDate: Date = new Date("2025-03-13");
 
   return (
-    <div className="max-w-4xl mx-auto pt-12 px-4 sm:px-6 lg:px-8 text-justify">
+    <div className="pt-12 px-4 sm:px-6 lg:px-8 text-justify">
       <GradientHeader>
         <div className="text-center mb-12">
           <h1 className="text-3xl font-extrabold sm:text-4xl">Privacy Policy</h1>

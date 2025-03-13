@@ -20,7 +20,7 @@ const TermsAndConditions = () => {
   const secondLevelUlClassName = "list-disc pl-4 space-y-1 pt-1";
 
   return (
-    <div className="max-w-4xl mx-auto pt-12 px-4 sm:px-6 lg:px-8 text-justify">
+    <div className="pt-12 px-4 sm:px-6 lg:px-8 text-justify">
       <GradientHeader>
         <div className="text-center mb-12">
           <h1 className="text-3xl font-extrabold sm:text-4xl">Terms and Conditions</h1>
