@@ -3,6 +3,7 @@ import React from "react";
 import { companyInfo } from "@/modules/global/config/company";
 import { formatFullDate } from "@/modules/global/utils";
 import EmailLink from "@/modules/legal/components/email-link";
+import GradientHeader from "@/modules/ui/gradient-header";
 
 const PrivacyPolicy = () => {
   const companyName: string = companyInfo.name;
@@ -15,10 +16,12 @@ const PrivacyPolicy = () => {
 
   return (
     <div className="max-w-4xl mx-auto pt-12 px-4 sm:px-6 lg:px-8 text-justify">
-      <div className="text-center mb-12">
-        <h1 className="text-3xl font-extrabold sm:text-4xl">Privacy Policy</h1>
-        <p className="mt-4 text-lg text-gray-500">Last Updated: {formatFullDate(privacyPolicyUpdateDate)}</p>
-      </div>
+      <GradientHeader>
+        <div className="text-center mb-12">
+          <h1 className="text-3xl font-extrabold sm:text-4xl">Privacy Policy</h1>
+          <p className="mt-4 text-lg text-gray-500">Last Updated: {formatFullDate(privacyPolicyUpdateDate)}</p>
+        </div>
+      </GradientHeader>
 
       <div className="prose prose-lg prose-indigo mx-auto">
         <section className="mb-10">
