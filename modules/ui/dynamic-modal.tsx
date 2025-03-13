@@ -10,7 +10,7 @@ interface ModalProps {
 
 export default function DynamicModal({ children, title, isOpen, onClose }: ModalProps) {
   return (
-    <Modal backdrop="blur" isOpen={isOpen} scrollBehavior="outside" size="sm" onClose={onClose}>
+    <Modal backdrop="blur" isOpen={isOpen} scrollBehavior="outside" size="2xl" onClose={onClose}>
       <ModalContent>
         {(onClose) => (
           <>
