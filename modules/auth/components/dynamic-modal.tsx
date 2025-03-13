@@ -10,12 +10,12 @@ interface ModalProps {
 
 export default function DynamicModal({ children, title, isOpen, onClose }: ModalProps) {
   return (
-    <Modal backdrop="blur" isOpen={isOpen} scrollBehavior="outside" size="2xl" onClose={onClose}>
+    <Modal backdrop="blur" isOpen={isOpen} scrollBehavior="outside" size="sm" onClose={onClose}>
       <ModalContent>
         {(onClose) => (
           <>
             {title && <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>}
-            <ModalBody className="w-full">{children}</ModalBody>
+            <ModalBody>{children}</ModalBody>
             <ModalFooter>
               <Button
                 fullWidth
