@@ -3,7 +3,7 @@ import React from "react";
 import { companyInfo } from "@/modules/global/config/company";
 import { formatFullDate } from "@/modules/global/utils";
 import EmailLink from "@/modules/legal/components/email-link";
-import GradientHeader from "@/modules/ui/gradient-header";
+import GradientHeader from "@/modules/ui/components/gradient-header";
 
 const PrivacyPolicy = () => {
   const companyName: string = companyInfo.name;

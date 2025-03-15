@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "@heroui/link";
 import { useDisclosure } from "@heroui/react";
 
-import DynamicModal from "@/modules/ui/dynamic-modal";
+import DynamicModal from "@/modules/ui/components/dynamic-modal";
 import TermsAndConditions from "@/modules/legal/screens/terms";
 import PrivacyPolicy from "@/modules/legal/screens/privacy";
 

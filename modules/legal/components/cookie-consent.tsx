@@ -5,7 +5,7 @@ import { Link } from "@heroui/link";
 import { Button } from "@heroui/button";
 import { useDisclosure } from "@heroui/react";
 
-import DynamicModal from "@/modules/ui/dynamic-modal";
+import DynamicModal from "@/modules/ui/components/dynamic-modal";
 import CookiePolicy from "@/modules/legal/screens/cookies";
 
 const COOKIE_CONSENT_KEY = "cookie_consent";

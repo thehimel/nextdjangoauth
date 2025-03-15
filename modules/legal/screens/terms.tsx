@@ -4,7 +4,7 @@ import { companyInfo } from "@/modules/global/config/company";
 import { formatFullDate } from "@/modules/global/utils";
 import { TermType } from "@/modules/legal/constants";
 import EmailLink from "@/modules/legal/components/email-link";
-import GradientHeader from "@/modules/ui/gradient-header";
+import GradientHeader from "@/modules/ui/components/gradient-header";
 
 const TermsAndConditions = () => {
   const companyName: string = companyInfo.name;
