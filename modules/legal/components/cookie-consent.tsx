@@ -1,6 +1,9 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
-import { Button, Link, useDisclosure } from "@heroui/react";
+import { Link } from "@heroui/link";
+import { Button } from "@heroui/button";
+import { useDisclosure } from "@heroui/react";
 
 import DynamicModal from "@/modules/ui/dynamic-modal";
 import CookiePolicy from "@/modules/legal/screens/cookies";

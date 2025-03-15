@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, useDisclosure } from "@heroui/react";
+import { Link } from "@heroui/link";
+import { useDisclosure } from "@heroui/react";
 
 import DynamicModal from "@/modules/ui/dynamic-modal";
 import TermsAndConditions from "@/modules/legal/screens/terms";

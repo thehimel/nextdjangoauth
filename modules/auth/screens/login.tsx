@@ -1,9 +1,13 @@
 "use client";
 
 import React from "react";
-import { Button, Input, Divider, ResizablePanel, Form } from "@heroui/react";
-import { AnimatePresence, m, domAnimation, LazyMotion } from "framer-motion";
+import { Form } from "@heroui/form";
+import { Input } from "@heroui/input";
+import { Button } from "@heroui/button";
+import { Divider } from "@heroui/divider";
 import { Icon } from "@iconify/react";
+import { ResizablePanel } from "@heroui/framer-utils";
+import { AnimatePresence, m, domAnimation, LazyMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 
