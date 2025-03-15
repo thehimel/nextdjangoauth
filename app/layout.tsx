@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import CookieConsent from "@/modules/legal/components/cookie-consent";
 
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
@@ -7,6 +6,7 @@ import React from "react";
 
 import { Providers } from "./providers";
 
+import CookieConsent from "@/modules/legal/components/cookie-consent";
 import { Colors, DEFAULT_THEME } from "@/modules/theme/constants";
 import { siteConfig } from "@/modules/global/config/site";
 import { fontSans } from "@/modules/global/config/fonts";
