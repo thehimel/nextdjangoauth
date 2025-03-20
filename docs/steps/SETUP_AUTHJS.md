@@ -81,7 +81,7 @@
   * http://localhost:3000/api/auth/callback/google
   * https://brandname.vercel.app/api/auth/callback/google
 
-![google_oauth.png](images/google_oauth.png)
+![google_oauth.png](images/google-oauth.png)
 
 > `Authorized JavaScript origins` is just the domain name; no slash at the end.
 

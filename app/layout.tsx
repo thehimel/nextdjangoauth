@@ -3,6 +3,8 @@ import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 import React from "react";
+import { getLocale } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
 
 import { Providers } from "./providers";
 
@@ -31,19 +33,23 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await getLocale();
+
   return (
-    <html suppressHydrationWarning lang="en">
+    <html suppressHydrationWarning lang={locale}>
       <head />
       <body className={clsx("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
-        <Providers themeProps={{ attribute: "class", defaultTheme: DEFAULT_THEME }}>
-          <div className="relative flex flex-col h-screen">
-            <Navbar />
-            <main className="container mx-auto max-w-7xl px-6 flex-grow">{children}</main>
-            <Footer />
-            <CookieConsent />
-          </div>
-        </Providers>
+        <NextIntlClientProvider>
+          <Providers themeProps={{ attribute: "class", defaultTheme: DEFAULT_THEME }}>
+            <div className="relative flex flex-col h-screen">
+              <Navbar />
+              <main className="container mx-auto max-w-7xl px-6 flex-grow">{children}</main>
+              <Footer />
+              <CookieConsent />
+            </div>
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -59,3 +59,11 @@
 * Added a new file: [env.ts](../../modules/global/config/env.ts) for managing environment variables in a centralized way.
 * Move all environment variable references (e.g., `.env`) into `env.ts` for better scalability and maintainability.
 * Access environment variables throughout the project using the exported object from `env.ts`.
+
+## Authentication
+
+[SETUP_AUTHJS.md](SETUP_AUTHJS.md)
+
+## Internationalization
+
+[INTL.md](INTL.md)

@@ -21,6 +21,7 @@ import { useIsAuthPage } from "@/modules/auth/hooks/useIsAuthPage";
 import AuthButton from "@/modules/auth/components/auth-button";
 import { siteConfig } from "@/modules/global/config/site";
 import { ThemeSwitch } from "@/modules/theme/components/theme-switch";
+import LocaleSwitcher from "@/modules/i18n/components/locale-switcher";
 import {
   TwitterIcon,
   GithubIcon,
@@ -97,6 +98,7 @@ export const Navbar = () => {
             <GithubIcon className="text-default-500" />
           </Link>
           <ThemeSwitch />
+          <LocaleSwitcher />
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
         <NavbarItem className="hidden md:flex">
@@ -121,6 +123,7 @@ export const Navbar = () => {
           <GithubIcon className="text-default-500" />
         </Link>
         <ThemeSwitch />
+        <LocaleSwitcher />
         <AuthButton />
         <NavbarMenuToggle />
       </NavbarContent>

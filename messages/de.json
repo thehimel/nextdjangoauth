@@ -1,0 +1,10 @@
+{
+  "HomePage": {
+    "quickStartGuide": "Schnellstartanleitung"
+  },
+  "LocaleSwitcher": {
+    "de": "Deutsch",
+    "en": "English",
+    "label": "Sprache"
+  }
+}

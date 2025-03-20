@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@heroui/button";
 import { Icon } from "@iconify/react";
 import { useTheme } from "next-themes";
@@ -8,6 +9,7 @@ import { useTheme } from "next-themes";
 export default function FadedHome() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const t = useTranslations("HomePage");
 
   // Handle mounting to prevent hydration mismatch
   useEffect(() => {
@@ -36,7 +38,7 @@ export default function FadedHome() {
             radius="full"
             variant="bordered"
           >
-            Quick Start Guide
+            {t("quickStartGuide")}
           </Button>
           <div className="text-center text-[clamp(40px,10vw,44px)] font-bold leading-[1.2] tracking-tighter sm:text-[64px]">
             {/* Theme-aware gradient text */}
