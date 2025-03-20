@@ -5,9 +5,9 @@ import { Snippet } from "@heroui/snippet";
 import { Code } from "@heroui/code";
 import { button as buttonStyles } from "@heroui/theme";
 
-import { siteConfig } from "@/modules/global/config/site";
 import { title, subtitle } from "@/modules/theme/primitives";
 import { GithubIcon } from "@/modules/global/components/icons";
+import { RESOURCE_URLS, SOCIAL_URLS } from "@/modules/global/config/urls";
 import { VantaBackground } from "@/modules/global/screens/home/vanta-home/vanta-background";
 
 export default function VantaHome() {
@@ -35,15 +35,11 @@ export default function VantaHome() {
               radius: "full",
               variant: "shadow",
             })}
-            href={siteConfig.links.docs}
+            href={RESOURCE_URLS.docs}
           >
             Documentation
           </Link>
-          <Link
-            isExternal
-            className={buttonStyles({ variant: "bordered", radius: "full" })}
-            href={siteConfig.links.github}
-          >
+          <Link isExternal className={buttonStyles({ variant: "bordered", radius: "full" })} href={SOCIAL_URLS.github}>
             <GithubIcon size={20} />
             GitHub
           </Link>

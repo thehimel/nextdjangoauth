@@ -10,17 +10,17 @@ import { Providers } from "./providers";
 
 import CookieConsent from "@/modules/legal/components/cookie-consent";
 import { Colors, DEFAULT_THEME } from "@/modules/theme/constants";
-import { siteConfig } from "@/modules/global/config/site";
+import { appConfig } from "@/modules/global/config/site";
 import { fontSans } from "@/modules/global/config/fonts";
 import { Navbar } from "@/modules/global/components/navbar";
 import { Footer } from "@/modules/global/components/footer";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    default: appConfig.name,
+    template: `%s - ${appConfig.name}`,
   },
-  description: siteConfig.description,
+  description: appConfig.description,
   icons: {
     icon: "/favicon.ico",
   },

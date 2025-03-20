@@ -17,7 +17,7 @@ import { handleEmailBlur } from "@/modules/auth/validators/emailValidator";
 import { requestMagicLink } from "@/modules/auth/services/requestMagicLink";
 import { ProviderId } from "@/modules/auth/constants";
 import { AuthMessages, getSignInErrorMessage } from "@/modules/auth/constants/messages";
-import { siteConfig } from "@/modules/global/config/site";
+import { appConfig } from "@/modules/global/config/site";
 import { TermsAgreement } from "@/modules/auth/components/terms-agreement";
 
 export default function LogInScreen() {
@@ -221,7 +221,7 @@ export default function LogInScreen() {
     <ResizablePanel>
       <div className="flex flex-col items-center">
         <Logo size={60} />
-        <h1 className="text-xl font-medium mt-2 mb-4">{siteConfig.name}</h1>
+        <h1 className="text-xl font-medium mt-2 mb-4">{appConfig.name}</h1>
       </div>
 
       {error && (

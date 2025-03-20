@@ -1,10 +1,28 @@
 {
+  "SiteConfig": {
+    "navItems": {
+      "home": "Startseite",
+      "docs": "Dokumentation",
+      "blog": "Blog",
+      "about": "Über uns"
+    },
+    "navMenuItems": {
+      "profile": "Profil",
+      "dashboard": "Dashboard",
+      "projects": "Projekte",
+      "team": "Team",
+      "calendar": "Kalender",
+      "settings": "Einstellungen",
+      "helpAndFeedback": "Hilfe & Feedback",
+      "logout": "Abmelden"
+    }
+  },
   "HomePage": {
     "quickStartGuide": "Schnellstartanleitung"
   },
   "LocaleSwitcher": {
     "de": "Deutsch",
-    "en": "English",
+    "en": "Englisch",
     "label": "Sprache"
   }
 }

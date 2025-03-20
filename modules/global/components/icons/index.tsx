@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { siteConfig } from "@/modules/global/config/site";
+import { appConfig } from "@/modules/global/config/site";
 import { IconSvgProps } from "@/modules/global/types";
 
 export const Logo: React.FC<IconSvgProps> = ({ size = 36, width, height, ...props }) => (
@@ -20,7 +20,7 @@ export const Logo: React.FC<IconSvgProps> = ({ size = 36, width, height, ...prop
       x="50%"
       y="55%"
     >
-      {siteConfig.shortName}
+      {appConfig.shortName}
     </text>
   </svg>
 );

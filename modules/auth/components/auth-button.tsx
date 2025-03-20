@@ -10,8 +10,8 @@ import { useTheme } from "next-themes";
 import { PuffLoader } from "react-spinners";
 
 import { Colors, Themes } from "@/modules/theme/constants";
-import { siteConfig } from "@/modules/global/config/site";
 import { AuthText } from "@/modules/auth/constants";
+import { AuthUrls } from "@/modules/auth/constants/urls";
 
 const AuthButton = () => {
   const { theme } = useTheme();
@@ -30,7 +30,7 @@ const AuthButton = () => {
       {status === "unauthenticated" && (
         <Button
           as={Link}
-          href={siteConfig.links.signin}
+          href={AuthUrls.SIGN_IN_API_URL}
           startContent={<Icon icon="line-md:login" width={20} />}
           variant="flat"
         >
@@ -40,7 +40,7 @@ const AuthButton = () => {
       {status === "authenticated" && (
         <Button
           as={Link}
-          href={siteConfig.links.signout}
+          href={AuthUrls.SIGN_OUT_API_URL}
           startContent={
             <Icon className="rotate-180 text-default-500" icon="solar:minus-circle-line-duotone" width={24} />
           }

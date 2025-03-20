@@ -1,4 +1,22 @@
 {
+  "SiteConfig": {
+    "navItems": {
+      "home": "Home",
+      "docs": "Docs",
+      "blog": "Blog",
+      "about": "About"
+    },
+    "navMenuItems": {
+      "profile": "Profile",
+      "dashboard": "Dashboard",
+      "projects": "Projects",
+      "team": "Team",
+      "calendar": "Calendar",
+      "settings": "Settings",
+      "helpAndFeedback": "Help & Feedback",
+      "logout": "Logout"
+    }
+  },
   "HomePage": {
     "quickStartGuide": "Quick Start Guide"
   },

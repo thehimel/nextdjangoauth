@@ -17,9 +17,11 @@ import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
 
+import { appConfig } from "@/modules/global/config/site";
+import { useSiteConfig } from "@/modules/global/hooks/useSiteConfig";
+import { RESOURCE_URLS, SOCIAL_URLS } from "@/modules/global/config/urls";
 import { useIsAuthPage } from "@/modules/auth/hooks/useIsAuthPage";
 import AuthButton from "@/modules/auth/components/auth-button";
-import { siteConfig } from "@/modules/global/config/site";
 import { ThemeSwitch } from "@/modules/theme/components/theme-switch";
 import LocaleSwitcher from "@/modules/i18n/components/locale-switcher";
 import {
@@ -32,6 +34,7 @@ import {
 } from "@/modules/global/components/icons";
 
 export const Navbar = () => {
+  const siteConfig = useSiteConfig();
   const isAuthPage = useIsAuthPage();
 
   if (isAuthPage) {
@@ -64,7 +67,7 @@ export const Navbar = () => {
           <NextLink className="flex justify-start items-center gap-1" href="/" scroll={false}>
             <Logo size={32} />
             {/* Hide in mobile view. */}
-            <p className="hidden md:flex font-bold text-inherit">{siteConfig.name}</p>
+            <p className="hidden md:flex font-bold text-inherit">{appConfig.name}</p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
@@ -88,13 +91,13 @@ export const Navbar = () => {
 
       <NavbarContent className="hidden sm:flex basis-1/5 sm:basis-full" justify="end">
         <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
+          <Link isExternal aria-label="Twitter" href={SOCIAL_URLS.twitter}>
             <TwitterIcon className="text-default-500" />
           </Link>
-          <Link isExternal aria-label="Discord" href={siteConfig.links.discord}>
+          <Link isExternal aria-label="Discord" href={SOCIAL_URLS.discord}>
             <DiscordIcon className="text-default-500" />
           </Link>
-          <Link isExternal aria-label="Github" href={siteConfig.links.github}>
+          <Link isExternal aria-label="Github" href={SOCIAL_URLS.github}>
             <GithubIcon className="text-default-500" />
           </Link>
           <ThemeSwitch />
@@ -106,7 +109,7 @@ export const Navbar = () => {
             isExternal
             as={Link}
             className="text-sm font-normal text-default-600 bg-default-100"
-            href={siteConfig.links.sponsor}
+            href={RESOURCE_URLS.sponsor}
             startContent={<HeartFilledIcon className="text-danger" />}
             variant="flat"
           >
@@ -119,7 +122,7 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
+        <Link isExternal aria-label="Github" href={SOCIAL_URLS.github}>
           <GithubIcon className="text-default-500" />
         </Link>
         <ThemeSwitch />
