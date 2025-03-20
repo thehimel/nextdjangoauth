@@ -21,7 +21,7 @@ export default function LocaleSwitcherSelect({ defaultValue, items, label }: Pro
     const locale = Array.from(keys)[0] as Locale;
 
     startTransition(() => {
-      setUserLocale(locale);
+      void setUserLocale(locale);
     });
   }
 
