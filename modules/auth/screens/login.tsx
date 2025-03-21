@@ -193,7 +193,7 @@ export default function LogInScreen() {
 
   const handleGoogleSignIn = () => {
     setIsSubmitting(true);
-    signIn(ProviderId.Google, { callbackUrl: urlParams.callbackUrl });
+    void signIn(ProviderId.Google, { callbackUrl: urlParams.callbackUrl });
   };
 
   const handleBackToEmail = () => {
