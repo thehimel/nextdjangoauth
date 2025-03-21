@@ -6,10 +6,10 @@
 
 ## Messages
 
-* [en.json](../../messages/en.json)
-* [de.json](../../messages/de.json)
+* [en.json](../../i18n/messages/en.json)
+* [de.json](../../i18n/messages/de.json)
 
-> The `messages` should be in the root directory. If moved to `public`, they will need to be fetched via API calls.
+> The `messages` should be in the root or inside the i18n directory. If moved to `public`, they will need to be fetched via API calls.
 
 ## Configuration
 

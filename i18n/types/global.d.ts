@@ -1,5 +1,4 @@
-import messages from "../../messages/en.json";
-
+import messages from "@/i18n/messages/en.json";
 import { routing } from "@/i18n/routing";
 import { formats } from "@/i18n/request";
 
