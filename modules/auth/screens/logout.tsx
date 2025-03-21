@@ -20,7 +20,8 @@ export default function LogOutScreen(): React.ReactElement {
   const router = useRouter();
   const { goBack } = usePreviousUrl("/");
 
-  const authMessages = useAuthMessages(session);
+  const authMessages = useAuthMessages();
+  const firstName = session?.user?.name?.split(" ")[0] || "";
 
   useEffect(() => {
     setMounted(true);
@@ -42,7 +43,7 @@ export default function LogOutScreen(): React.ReactElement {
         <p className="text-xl font-medium mt-2">{appConfig.name}</p>
         {status === "authenticated" && (
           <p className="text-small text-default-500 mt-2 mb-4 text-center">
-            {authMessages.logoutPage.areYouSure}
+            {authMessages.logoutPage.areYouSure(firstName)}
           </p>
         )}
       </div>

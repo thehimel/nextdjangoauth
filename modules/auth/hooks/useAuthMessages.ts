@@ -1,11 +1,7 @@
 import { useTranslations } from "next-intl";
 
-// Assuming you have access to `session` from context, props, or a hook
-export const useAuthMessages = (session?: any) => {
+export const useAuthMessages = () => {
   const t = useTranslations("authMessages");
-
-  // Derive first name from session, if available
-  const firstName = session?.user?.name?.split(" ")[0] || "";
 
   return {
     general: {
@@ -39,7 +35,7 @@ export const useAuthMessages = (session?: any) => {
       continue: t("magicLink.continue"),
     },
     logoutPage: {
-      areYouSure: t("logoutPage.areYouSure", { name: firstName }),
+      areYouSure: (name: string) => t("logoutPage.areYouSure", { name }),
       goBack: t("logoutPage.goBack"),
       confirm: t("logoutPage.confirm"),
     },
