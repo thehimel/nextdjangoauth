@@ -68,6 +68,11 @@
     "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
     "verificationCodeLabel": "Bestätigungscode",
     "verificationCodePlaceholder": "Geben Sie Ihren Bestätigungscode ein"
+    },
+    "termsAgreement": {
+      "text": "Mit der Anmeldung stimmen Sie unseren <terms>Nutzungsbedingungen</terms> und unserer <privacy>Datenschutzrichtlinie</privacy> zu.",
+      "terms": "Nutzungsbedingungen",
+      "privacy": "Datenschutzrichtlinie"
     }
   }
 }

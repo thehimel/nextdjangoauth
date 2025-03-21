@@ -68,6 +68,11 @@
     "emailPlaceholder": "Enter your email",
     "verificationCodeLabel": "Verification Code",
     "verificationCodePlaceholder": "Enter your verification code"
+    },
+    "termsAgreement": {
+      "text": "By logging in, you agree to our <terms>Terms</terms> and <privacy>Privacy Policy</privacy>.",
+      "terms": "Terms",
+      "privacy": "Privacy Policy"
     }
   }
 }
