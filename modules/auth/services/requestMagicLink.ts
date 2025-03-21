@@ -4,7 +4,7 @@ import axios, { AxiosError } from "axios";
 
 import { getError } from "@/modules/global/errors";
 import { AuthUrls } from "@/modules/auth/constants/urls";
-import { AuthMessages } from "@/modules/auth/constants/messages";
+import { useAuthMessages } from "@/modules/auth/hooks/useAuthMessages";
 
 export interface RequestMagicLinkResponseInterface {
   success: boolean;
@@ -17,7 +17,10 @@ export interface RequestMagicLinkResponseInterface {
   };
 }
 
-export const requestMagicLink = async (email: string): Promise<RequestMagicLinkResponseInterface> => {
+export const requestMagicLink = async (
+  email: string,
+  authMessages: ReturnType<typeof useAuthMessages>,
+): Promise<RequestMagicLinkResponseInterface> => {
   try {
     await axios.post(
       AuthUrls.REQUEST_MAGIC_LINK_URL,
@@ -25,13 +28,13 @@ export const requestMagicLink = async (email: string): Promise<RequestMagicLinkR
       { headers: { "Content-Type": "application/json" } },
     );
 
-    return { success: true, message: AuthMessages.REQUEST_MAGIC_LINK_SUCCESS };
+    return { success: true, message: authMessages.magicLink.requestMagicLinkSuccess };
   } catch (error) {
     const refinedError = getError(error as AxiosError);
 
     return {
       success: false,
-      message: AuthMessages.REQUEST_MAGIC_LINK_ERROR,
+      message: authMessages.magicLink.requestMagicLinkError,
       error: {
         code: refinedError.code as string,
         provider: refinedError.provider as string,

@@ -10,17 +10,22 @@ import { ResizablePanel } from "@heroui/framer-utils";
 import { AnimatePresence, m, domAnimation, LazyMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { useTranslations } from "next-intl";
 
 import { Logo } from "@/modules/global/components/icons";
 import LoadingScreen from "@/modules/auth/components/loading-screen";
 import { handleEmailBlur } from "@/modules/auth/validators/emailValidator";
 import { requestMagicLink } from "@/modules/auth/services/requestMagicLink";
 import { ProviderId } from "@/modules/auth/constants";
-import { AuthMessages, getSignInErrorMessage } from "@/modules/auth/constants/messages";
+import { useAuthMessages } from "@/modules/auth/hooks/useAuthMessages";
+import { useSignInErrorMessage } from "@/modules/auth/hooks/useSignInErrorMessage";
 import { appConfig } from "@/modules/global/config/site";
 import { TermsAgreement } from "@/modules/auth/components/terms-agreement";
 
 export default function LogInScreen() {
+  const t = useTranslations("authMessages");
+  const authMessages = useAuthMessages();
+  const getSignInErrorMessage = useSignInErrorMessage();
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -58,9 +63,10 @@ export default function LogInScreen() {
   // Error handling from URL params
   React.useEffect(() => {
     if (urlParams.errorType) {
+      const emailText = urlParams.email ? `${urlParams.email} ` : "";
       const errorMessage =
         urlParams.errorType === "email_registered_with_email_login"
-          ? `This email ${urlParams.email ? `(${urlParams.email}) ` : ""}is registered with email sign-in. Please continue with email or use a different account.`
+          ? t("authentication.emailRegisteredWithEmailLogin", { emailText: emailText })
           : getSignInErrorMessage(urlParams.errorType);
 
       setError(errorMessage);
@@ -98,7 +104,7 @@ export default function LogInScreen() {
       })
         .then((response) => {
           if (response?.error) {
-            setError(AuthMessages.VERIFY_MAGIC_LINK_ERROR);
+            setError(authMessages.magicLink.verifyMagicLinkError);
             setVerifyingToken(false);
           } else {
             router.push(urlParams.callbackUrl);
@@ -106,7 +112,7 @@ export default function LogInScreen() {
         })
         .catch((error) => {
           console.error("Error verifying magic link token:", error);
-          setError(AuthMessages.VERIFY_MAGIC_LINK_ERROR);
+          setError(authMessages.magicLink.verifyMagicLinkError);
           setVerifyingToken(false);
         });
     }
@@ -122,7 +128,7 @@ export default function LogInScreen() {
     event.preventDefault();
 
     if (!email) {
-      setEmailError(AuthMessages.EMAIL_VALIDATION_ERROR);
+      setEmailError(authMessages.validationErrors.emailValidationError);
 
       return;
     }
@@ -131,7 +137,7 @@ export default function LogInScreen() {
       setIsSubmitting(true);
       setError("");
 
-      const response = await requestMagicLink(email);
+      const response = await requestMagicLink(email, authMessages);
 
       if (response.success) {
         setEmailSent(true);
@@ -141,12 +147,15 @@ export default function LogInScreen() {
       } else {
         setError(response.error?.email || response.error?.message || response.message);
         if (response.error?.code === "email_registered_with_social_login" && isFormVisible) {
+          setError(
+            t("authentication.emailRegisteredWithSocialLogin", { provider: response.error.provider || "social" }),
+          );
           setIsFormVisible(false);
         }
       }
     } catch (error) {
       console.error("Error sending magic link:", error);
-      setError("Failed to send magic link. Please try again.");
+      setError(authMessages.magicLink.failedToSendMagicLinkError);
     } finally {
       setIsSubmitting(false);
     }
@@ -156,7 +165,7 @@ export default function LogInScreen() {
     event.preventDefault();
 
     if (!verificationCode) {
-      setVerificationCodeError(AuthMessages.VERIFICATION_CODE_EMPTY_ERROR);
+      setVerificationCodeError(authMessages.validationErrors.verificationCodeEmptyError);
 
       return;
     }
@@ -173,14 +182,14 @@ export default function LogInScreen() {
       });
 
       if (result?.error) {
-        setVerificationCodeError(AuthMessages.VERIFICATION_CODE_VALIDATION_ERROR);
+        setVerificationCodeError(authMessages.validationErrors.verificationCodeValidationError);
         setEmailSent(false);
       } else {
         router.push(urlParams.callbackUrl);
       }
     } catch (error) {
       console.error("Error verifying code:", error);
-      setError("Failed to verify code. Please try again.");
+      setError(authMessages.magicLink.failedToVerifyCodeError);
     } finally {
       setIsSubmitting(false);
     }
@@ -214,7 +223,7 @@ export default function LogInScreen() {
   );
 
   if (verifyingToken) {
-    return <LoadingScreen message={AuthMessages.LINK_VERIFICATION_IN_PROGRESS} />;
+    return <LoadingScreen message={authMessages.magicLink.linkVerificationInProgress} />;
   }
 
   return (
@@ -256,14 +265,16 @@ export default function LogInScreen() {
                   <Input
                     errorMessage={emailError}
                     isInvalid={!!emailError}
-                    label="Email"
+                    label={authMessages.loginForm.emailLabel}
                     name="email"
-                    placeholder="Enter your email"
+                    placeholder={authMessages.loginForm.emailPlaceholder}
                     startContent={<Icon className="text-gray-400" icon="mdi:email-outline" />}
                     type="email"
                     value={email}
                     variant="bordered"
-                    onBlur={() => handleEmailBlur(email, setEmailError)}
+                    onBlur={() =>
+                      handleEmailBlur(email, setEmailError, authMessages.validationErrors.emailValidationError)
+                    }
                     onChange={handleEmailChange}
                   />
                   <Button
@@ -273,7 +284,7 @@ export default function LogInScreen() {
                     isLoading={isSubmitting}
                     type="submit"
                   >
-                    Continue with Email
+                    {authMessages.authentication.continueWithEmail}
                   </Button>
                 </Form>
               ) : (
@@ -290,8 +301,7 @@ export default function LogInScreen() {
                         </div>
                         <div className="ml-3">
                           <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                            We have sent a verification code to {email}. You can either enter the code below or click in
-                            the email.
+                            {authMessages.magicLink.verificationCodeSent}
                           </p>
                         </div>
                       </div>
@@ -301,9 +311,9 @@ export default function LogInScreen() {
                     <Input
                       errorMessage={verificationCodeError}
                       isInvalid={!!verificationCodeError}
-                      label="Verification Code"
+                      label={authMessages.loginForm.verificationCodeLabel}
                       name="verificationCode"
-                      placeholder="Enter your verification code"
+                      placeholder={authMessages.loginForm.verificationCodePlaceholder}
                       startContent={
                         <Icon
                           aria-hidden="true"
@@ -327,7 +337,7 @@ export default function LogInScreen() {
                       isLoading={isSubmitting}
                       type="submit"
                     >
-                      Continue
+                      {authMessages.magicLink.continue}
                     </Button>
                     <Button
                       fullWidth
@@ -359,7 +369,7 @@ export default function LogInScreen() {
                       setError("");
                     }}
                   >
-                    Other Login options
+                    {authMessages.authentication.otherLoginOptions}
                   </Button>
                 </>
               )}
@@ -373,7 +383,7 @@ export default function LogInScreen() {
                 startContent={<Icon icon="ri:google-fill" width={24} />}
                 onPress={handleGoogleSignIn}
               >
-                Continue with Google
+                {authMessages.authentication.continueWithGoogle}
               </Button>
               {orDivider}
               <m.div
@@ -395,7 +405,7 @@ export default function LogInScreen() {
                       setError("");
                     }}
                   >
-                    Continue with Email
+                    {authMessages.authentication.continueWithEmail}
                   </Button>
                 </div>
                 <TermsAgreement className="mt-3" />

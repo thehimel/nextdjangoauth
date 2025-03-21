@@ -10,10 +10,11 @@ import { useTheme } from "next-themes";
 import { PuffLoader } from "react-spinners";
 
 import { Colors, Themes } from "@/modules/theme/constants";
-import { AuthText } from "@/modules/auth/constants";
 import { AuthUrls } from "@/modules/auth/constants/urls";
+import { useAuthMessages } from "@/modules/auth/hooks/useAuthMessages";
 
 const AuthButton = () => {
+  const authMessages = useAuthMessages();
   const { theme } = useTheme();
   const isSSR = useIsSSR();
   const color = theme === Themes.LIGHT || isSSR ? Colors.BLACK : Colors.WHITE;
@@ -34,7 +35,7 @@ const AuthButton = () => {
           startContent={<Icon icon="line-md:login" width={20} />}
           variant="flat"
         >
-          {AuthText.LogIn}
+          {authMessages.authentication.logIn}
         </Button>
       )}
       {status === "authenticated" && (
@@ -46,7 +47,7 @@ const AuthButton = () => {
           }
           variant="flat"
         >
-          {AuthText.LogOut}
+          {authMessages.authentication.logOut}
         </Button>
       )}
     </>

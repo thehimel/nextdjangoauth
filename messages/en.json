@@ -24,5 +24,50 @@
     "de": "Deutsch",
     "en": "English",
     "label": "Language"
+  },
+  "authMessages": {
+    "general": {
+      "loading": "Loading...",
+      "unexpectedError": "An unexpected error occurred. Please try again."
+    },
+    "authentication": {
+      "logIn": "Log In",
+      "logOut": "Log Out",
+      "googleAuthUnavailable": "Google authentication is currently unavailable. Please try again later.",
+      "accessDenied": "You do not have permission to log in.",
+      "configurationError": "There is a problem with the authentication configuration.",
+      "oauthCallbackError": "There was a problem with the OAuth provider.",
+      "emailRegisteredWithEmailLogin": "This email {emailText}is registered with email sign-in. Please continue with email or use a different account.",
+      "emailRegisteredWIthSocialLogin": "This email is already registered with {provider} sign-in. Please use {provider} to log in or use a different email.",
+      "continueWithGoogle": "Continue with Google",
+      "continueWithEmail": "Continue with Email",
+      "otherLoginOptions": "Other Login options"
+    },
+    "validationErrors": {
+      "emailValidationError": "Please enter a valid email address.",
+      "verificationCodeEmptyError": "Please enter a valid verification code.",
+      "verificationCodeValidationError": "Sorry, we couldn't verify this code. Please try again or request a new one."
+    },
+    "magicLink": {
+      "linkVerificationInProgress": "Almost there! Verifying your link!",
+      "requestMagicLinkSuccess": "Your sign-in link has been sent to your email. Please check your inbox and click on the link to log in. If it doesn’t show up, check your spam folder or try sending it again.",
+      "requestMagicLinkError": "Sorry, we're having trouble sending the verification link now. Please try again later.",
+      "failedToSendMagicLinkError": "Failed to send magic link. Please try again.",
+      "verifyMagicLinkError": "The verification link is either invalid or has expired. Please try signing in with your email again to request a new link.",
+      "failedToVerifyCodeError": "Failed to verify code. Please try again.",
+      "verificationCodeSent": "We have sent a verification code to your email. You can either enter the code below or click in the email.",
+      "continue": "Continue"
+    },
+    "logoutPage": {
+      "areYouSure": "Are you sure you want to log out {name}?",
+      "goBack": "Go Back",
+      "confirm": "Confirm"
+    },
+    "loginForm": {
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "verificationCodeLabel": "Verification Code",
+    "verificationCodePlaceholder": "Enter your verification code"
+    }
   }
 }

@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { PuffLoader } from "react-spinners";
 
+import { useAuthMessages } from "@/modules/auth/hooks/useAuthMessages";
 import { Logo } from "@/modules/global/components/icons";
 import { appConfig } from "@/modules/global/config/site";
 import { usePreviousUrl } from "@/modules/auth/hooks/usePreviousUrl";
@@ -19,7 +20,7 @@ export default function LogOutScreen(): React.ReactElement {
   const router = useRouter();
   const { goBack } = usePreviousUrl("/");
 
-  const firstName = session?.user?.name?.split(" ")[0] || "";
+  const authMessages = useAuthMessages(session);
 
   useEffect(() => {
     setMounted(true);
@@ -41,7 +42,7 @@ export default function LogOutScreen(): React.ReactElement {
         <p className="text-xl font-medium mt-2">{appConfig.name}</p>
         {status === "authenticated" && (
           <p className="text-small text-default-500 mt-2 mb-4 text-center">
-            Are you sure you want to log out{firstName && ` ${firstName}`}?
+            {authMessages.logoutPage.areYouSure}
           </p>
         )}
       </div>
@@ -58,7 +59,7 @@ export default function LogOutScreen(): React.ReactElement {
             startContent={<Icon icon="solar:arrow-left-linear" width={20} />}
             onPress={goBack}
           >
-            Go Back
+            {authMessages.logoutPage.goBack}
           </Button>
           <Button
             fullWidth
@@ -67,7 +68,7 @@ export default function LogOutScreen(): React.ReactElement {
             variant="bordered"
             onPress={() => signOut({ redirectTo: "/" })}
           >
-            Confirm
+            {authMessages.logoutPage.confirm}
           </Button>
         </div>
       )}

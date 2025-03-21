@@ -24,5 +24,50 @@
     "de": "Deutsch",
     "en": "Englisch",
     "label": "Sprache"
+  },
+  "authMessages": {
+    "general": {
+      "loading": "Wird geladen...",
+      "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut."
+    },
+    "authentication": {
+      "logIn": "Einloggen",
+      "logOut": "Ausloggen",
+      "googleAuthUnavailable": "Die Google-Authentifizierung ist derzeit nicht verfügbar. Bitte versuche es später erneut.",
+      "accessDenied": "Du hast keine Berechtigung, dich anzumelden.",
+      "configurationError": "Es gibt ein Problem mit der Authentifizierungskonfiguration.",
+      "oauthCallbackError": "Es gab ein Problem mit dem OAuth-Anbieter.",
+      "emailRegisteredWithEmailLogin": "Diese E-Mail {emailText}ist mit der E-Mail-Anmeldung registriert. Bitte fahren Sie mit der E-Mail fort oder verwenden Sie ein anderes Konto.",
+      "emailRegisteredWithSocialLogin": "Diese E-Mail-Adresse ist bereits mit der {provider}-Anmeldung registriert. Bitte verwenden Sie {provider}, um sich anzumelden, oder nutzen Sie eine andere E-Mail-Adresse.",
+      "continueWithGoogle": "Mit Google fortfahren",
+      "continueWithEmail": "Mit E-Mail fortfahren",
+      "otherLoginOptions": "Weitere Anmeldemöglichkeiten"
+    },
+    "validationErrors": {
+      "emailValidationError": "Bitte gib eine gültige E-Mail-Adresse ein.",
+      "verificationCodeEmptyError": "Bitte gib einen gültigen Bestätigungscode ein.",
+      "verificationCodeValidationError": "Entschuldigung, wir konnten diesen Code nicht verifizieren. Bitte versuche es erneut oder fordere einen neuen an."
+    },
+    "magicLink": {
+      "linkVerificationInProgress": "Fast geschafft! Wir verifizieren deinen Link!",
+      "requestMagicLinkSuccess": "Der Anmeldelink wurde an deine E-Mail gesendet. Bitte überprüfe dein Postfach und klicke auf den Link, um dich anzumelden. Wenn er nicht angezeigt wird, überprüfe deinen Spam-Ordner oder versuche es erneut.",
+      "requestMagicLinkError": "Entschuldigung, wir haben derzeit Probleme, den Bestätigungslink zu senden. Bitte versuche es später erneut.",
+      "failedToSendMagicLinkError": "Der Magic Link konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+      "verifyMagicLinkError": "Der Bestätigungslink ist entweder ungültig oder abgelaufen. Bitte versuche es erneut, indem du dich mit deiner E-Mail anmeldest und einen neuen Link anforderst.",
+      "failedToVerifyCodeError": "Failed to verify code. Please try again.",
+      "verificationCodeSent": "Wir haben einen Bestätigungscode an deine E-Mail gesendet. Du kannst entweder den Code unten eingeben oder auf den Link in der E-Mail klicken.",
+      "continue": "Weiter"
+    },
+    "logoutPage": {
+      "areYouSure": "Bist du sicher, dass du dich von {name} abmelden möchtest?",
+      "goBack": "Zurück",
+      "confirm": "Bestätigen"
+    },
+    "loginForm": {
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
+    "verificationCodeLabel": "Bestätigungscode",
+    "verificationCodePlaceholder": "Geben Sie Ihren Bestätigungscode ein"
+    }
   }
 }
