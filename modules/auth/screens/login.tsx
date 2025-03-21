@@ -10,7 +10,6 @@ import { ResizablePanel } from "@heroui/framer-utils";
 import { AnimatePresence, m, domAnimation, LazyMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
-import { useTranslations } from "next-intl";
 
 import { Logo } from "@/modules/global/components/icons";
 import LoadingScreen from "@/modules/auth/components/loading-screen";
@@ -23,7 +22,6 @@ import { appConfig } from "@/modules/global/config/site";
 import { TermsAgreement } from "@/modules/auth/components/terms-agreement";
 
 export default function LogInScreen() {
-  const t = useTranslations("authMessages");
   const authMessages = useAuthMessages();
   const getSignInErrorMessage = useSignInErrorMessage();
   const router = useRouter();
@@ -66,7 +64,7 @@ export default function LogInScreen() {
       const emailText = urlParams.email ? `${urlParams.email} ` : "";
       const errorMessage =
         urlParams.errorType === "email_registered_with_email_login"
-          ? t("authentication.emailRegisteredWithEmailLogin", { emailText: emailText })
+          ? authMessages.authentication.emailRegisteredWithEmailLogin(emailText)
           : getSignInErrorMessage(urlParams.errorType);
 
       setError(errorMessage);
@@ -147,9 +145,7 @@ export default function LogInScreen() {
       } else {
         setError(response.error?.email || response.error?.message || response.message);
         if (response.error?.code === "email_registered_with_social_login" && isFormVisible) {
-          setError(
-            t("authentication.emailRegisteredWithSocialLogin", { provider: response.error.provider || "social" }),
-          );
+          setError(authMessages.authentication.emailRegisteredWithSocialLogin(response.error.provider || "social"));
           setIsFormVisible(false);
         }
       }

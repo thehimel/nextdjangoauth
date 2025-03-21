@@ -15,6 +15,10 @@ export const useAuthMessages = () => {
       accessDenied: t("authentication.accessDenied"),
       configurationError: t("authentication.configurationError"),
       oAuthCallbackError: t("authentication.oauthCallbackError"),
+      emailRegisteredWithEmailLogin: (emailText: string) =>
+        t("authentication.emailRegisteredWithEmailLogin", { emailText: emailText }),
+      emailRegisteredWithSocialLogin: (provider: string) =>
+        t("authentication.emailRegisteredWithSocialLogin", { provider: provider }),
       continueWithGoogle: t("authentication.continueWithGoogle"),
       continueWithEmail: t("authentication.continueWithEmail"),
       otherLoginOptions: t("authentication.otherLoginOptions"),
