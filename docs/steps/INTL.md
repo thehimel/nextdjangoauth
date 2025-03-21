@@ -18,6 +18,7 @@
   * [config.ts](../../i18n/config.ts)
   * [locale.ts](../../i18n/locale.ts)
   * [request.ts](../../i18n/request.ts)
+  * [global.d.ts](../../i18n/types/global.d.ts)
   > The `i18n` directory, containing the configuration files, must be placed in the root directory to allow direct access to the message files.
 * Set up the plugin in [next.config.js](../../next.config.js)
 
@@ -36,3 +37,4 @@
 ![next-intl.png](images/next-intl.png)
 
 * [App Router setup without i18n routing](https://next-intl.dev/docs/getting-started/app-router/without-i18n-routing)
+* [TypeScript augmentation](https://next-intl.dev/docs/workflows/typescript)
