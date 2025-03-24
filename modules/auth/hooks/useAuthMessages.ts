@@ -1,5 +1,7 @@
 import { useTranslations } from "next-intl";
 
+export type AuthMessages = ReturnType<typeof useAuthMessages>;
+
 export const useAuthMessages = () => {
   const t = useTranslations("authMessages");
 

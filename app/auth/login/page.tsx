@@ -1,5 +1,5 @@
-import LogInScreen from "@/modules/auth/screens/login";
+import LogInScreenUpdated from "@/modules/auth/screens/login-screen";
 
 export default function LogInPage() {
-  return <LogInScreen />;
+  return <LogInScreenUpdated />;
 }
